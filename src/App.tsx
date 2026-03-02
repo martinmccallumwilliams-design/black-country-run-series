@@ -310,7 +310,7 @@ const RegisterForm = () => {
             onChange={e => setFormData({ ...formData, gdpr: e.target.checked })}
           />
           <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-            I agree to receive emails about Black Country Run Series entries, offers and event updates. You can unsubscribe at any time. We’ll never sell your data. View our <a href="#" className="underline">Privacy Policy</a>.
+            I consent to receiving email communications regarding the Black Country Run Series including priority entry access, event updates and future race announcements. I understand I can unsubscribe at any time. View our <a href="/legal#privacy" className="underline text-brand-red">Privacy Policy</a>.
           </span>
         </label>
       </div>
@@ -786,10 +786,11 @@ export default function App() {
             <div>
               <h4 className="font-display font-bold uppercase tracking-widest text-xs mb-6 text-gray-400">Legal</h4>
               <ul className="space-y-4 text-sm text-gray-500">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms & Conditions</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Accessibility</a></li>
-                <li><a href="mailto:info@tiptonharriers.co.uk" className="hover:text-white transition-colors">Contact Us</a></li>
+                <li><a href="/legal#privacy" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="/legal#terms" className="hover:text-white transition-colors">Terms & Conditions</a></li>
+                <li><a href="/legal#cookies" className="hover:text-white transition-colors">Cookie Policy</a></li>
+                <li><a href="/legal#refunds" className="hover:text-white transition-colors">Refund Policy</a></li>
+                <li><a href="mailto:contact@blackcountryrunseries.co.uk" className="hover:text-white transition-colors">Contact Us</a></li>
               </ul>
             </div>
           </div>
