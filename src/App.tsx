@@ -352,12 +352,12 @@ export default function App() {
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1530143311094-34d807799e8f?auto=format&fit=crop&q=80&w=2000"
-            alt="Runners on a trail"
-            className="w-full h-full object-cover opacity-30 grayscale"
+            src="/images/BCR Cover Photo.png"
+            alt="Black Country Run Series Preview"
+            className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/40 to-brand-dark" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/60 to-brand-dark" />
         </div>
 
         <div className="relative z-20 max-w-4xl mx-auto text-center">
@@ -372,8 +372,8 @@ export default function App() {
             <h1 className="text-5xl md:text-8xl mb-6 leading-[0.9] text-gradient">
               BLACK COUNTRY <br /> RUN SERIES
             </h1>
-            <p className="text-lg md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-medium">
-              Three evening 5Ks. One interlocking medal. <br className="hidden md:block" /> One unforgettable summer.
+            <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium leading-relaxed italic border-l-4 border-brand-red pl-6 py-2">
+              "...an exciting opportunity to be part of the first Black Country Run Series!"
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
