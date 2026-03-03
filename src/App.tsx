@@ -171,21 +171,12 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
           <span className="bg-brand-red text-[10px] uppercase font-bold tracking-[0.2em] px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(220,38,38,0.3)] border border-brand-red/50">{type}</span>
         </div>
       </div>
-
       <div className="p-6 flex-grow flex flex-col relative z-10">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <div className="flex items-center gap-2 text-brand-red mb-2">
-              <Calendar size={14} />
-              <span className="text-xs font-bold uppercase tracking-wider">{date}</span>
-            </div>
-            <h3 className="text-2xl mb-2 group-hover:text-brand-red transition-colors pr-2">{title}</h3>
-          </div>
-          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 border border-white/10 bg-black flex items-center justify-center p-1">
-            {/* The first image in the array is the Logo. We contain it and slightly brighten it. */}
-            <img src={images[0]} alt={`${title} mini logo`} className="w-full h-full object-contain filter contrast-125 saturate-150" referrerPolicy="no-referrer" />
-          </div>
+        <div className="flex items-center gap-2 text-brand-red mb-2">
+          <Calendar size={14} />
+          <span className="text-xs font-bold uppercase tracking-wider">{date}</span>
         </div>
+        <h3 className="text-2xl mb-2 group-hover:text-brand-red transition-colors">{title}</h3>
         <div className="flex items-start gap-2 text-gray-400 text-sm mb-4">
           <MapPin size={16} className="shrink-0 mt-0.5" />
           <span>{location}</span>
@@ -211,7 +202,7 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
         <div className="absolute -inset-px bg-gradient-to-r from-brand-red/20 to-transparent rounded-2xl blur-sm" />
       </div>
-    </motion.div>
+    </motion.div >
   );
 };
 
