@@ -806,6 +806,38 @@ export default function App() {
         </div>
       </section>
 
+      {/* Runners Route Training Plan Banner */}
+      <section className="py-16 px-6 bg-black border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="block glass rounded-3xl p-8 md:p-10 hover:border-white/20 transition-all group relative overflow-hidden">
+            {/* Subtle gradient accent */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-emerald-600/20 rounded-2xl flex items-center justify-center border border-emerald-600/30 group-hover:scale-110 transition-transform">
+                  <span className="font-display font-bold text-2xl text-emerald-500">RR</span>
+                </div>
+              </div>
+              <div className="flex-grow text-center md:text-left">
+                <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500">Training Partner</span>
+                  <span className="text-gray-600">•</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">runnersroute.co.uk</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-display font-bold mb-2 group-hover:text-white transition-colors">Free 5K Series Training Plan</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">Every series entrant receives a free downloadable training plan from <strong className="text-white">Runners Route</strong> — designed to get you race-ready for all 3 events this summer.</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="glass px-5 py-3 rounded-full text-sm font-bold group-hover:bg-emerald-600/20 group-hover:border-emerald-600/30 transition-all flex items-center gap-2">
+                  Learn More <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black pt-24 pb-12 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
@@ -849,9 +881,41 @@ export default function App() {
             </div>
           </div>
 
+          {/* Partners Strip */}
+          <div className="py-8 border-t border-white/5 mb-8">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600 text-center mb-6">Partners & Affiliates</p>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+              <a href="https://tiptonharriers.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-tipton-green transition-colors">
+                <div className="w-7 h-7 bg-tipton-green/20 rounded flex items-center justify-center group-hover:bg-tipton-green/30 transition-colors">
+                  <span className="font-display font-bold text-xs text-tipton-green">TH</span>
+                </div>
+                <span className="text-xs font-bold tracking-wider uppercase">Tipton Harriers</span>
+              </a>
+              <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-emerald-500 transition-colors">
+                <div className="w-7 h-7 bg-emerald-600/20 rounded flex items-center justify-center group-hover:bg-emerald-600/30 transition-colors">
+                  <span className="font-display font-bold text-xs text-emerald-500">RR</span>
+                </div>
+                <span className="text-xs font-bold tracking-wider uppercase">Runners Route</span>
+              </a>
+              <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-amber-500 transition-colors">
+                <div className="w-7 h-7 bg-amber-600/20 rounded flex items-center justify-center group-hover:bg-amber-600/30 transition-colors">
+                  <span className="font-display font-bold text-xs text-amber-500">RW</span>
+                </div>
+                <span className="text-xs font-bold tracking-wider uppercase">Race Rewards</span>
+              </a>
+            </div>
+          </div>
+
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-gray-600">© 2026 Tipton Harriers. Black Country Run Series.</p>
             <p className="text-[10px] text-gray-700 uppercase tracking-[0.2em]">Three Evening Races. One Summer. One Medal.</p>
+          </div>
+
+          {/* ReplyHero Credit */}
+          <div className="mt-8 text-center">
+            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-700 hover:text-gray-500 transition-colors tracking-wider">
+              Website by <span className="font-bold">ReplyHero</span> — Websites & Digital Media serving the Black Country
+            </a>
           </div>
         </div>
       </footer>
