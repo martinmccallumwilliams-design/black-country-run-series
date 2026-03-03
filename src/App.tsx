@@ -815,8 +815,8 @@ export default function App() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-green-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center border border-green-600/30 group-hover:scale-110 transition-transform">
-                  <span className="font-display font-bold text-2xl text-green-500">TH</span>
+                <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/5 border border-white/10 p-2 group-hover:scale-110 transition-transform">
+                  <img src="/images/Tipton Harriers Logo.png" alt="Tipton Harriers" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="flex-grow text-center md:text-left">
@@ -829,7 +829,7 @@ export default function App() {
                 <p className="text-gray-400 text-sm leading-relaxed">One of the most successful athletics clubs in the UK — catering from complete beginners to international elites. Looking to join a club? <strong className="text-white">Get in touch and start your journey.</strong></p>
               </div>
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="bg-green-600 text-white px-6 py-3 rounded-full text-sm font-bold text-center group-hover:bg-green-500 transition-all flex items-center justify-center gap-2">
+                <div className="btn-partner-green px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
                   Visit Tipton Harriers <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -841,8 +841,8 @@ export default function App() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-emerald-600/20 rounded-2xl flex items-center justify-center border border-emerald-600/30 group-hover:scale-110 transition-transform">
-                  <span className="font-display font-bold text-2xl text-emerald-500">RR</span>
+                <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/5 border border-white/10 p-2 group-hover:scale-110 transition-transform">
+                  <img src="/images/Runners Route Logo.png" alt="Runners Route" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="flex-grow text-center md:text-left">
@@ -855,7 +855,7 @@ export default function App() {
                 <p className="text-gray-400 text-sm leading-relaxed">Looking for a one-off 5K training plan? Contact <strong className="text-white">Runners Route</strong> and quote code <span className="bg-emerald-600/20 text-emerald-400 font-bold px-2 py-0.5 rounded">'BLACK COUNTRY RUN SERIES'</span> to claim your free downloadable plan.</p>
               </div>
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="bg-emerald-600 text-white px-6 py-3 rounded-full text-sm font-bold text-center group-hover:bg-emerald-500 transition-all flex items-center justify-center gap-2">
+                <div className="btn-partner-emerald px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
                   Get Your Plan <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -867,8 +867,8 @@ export default function App() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-amber-600/20 rounded-2xl flex items-center justify-center border border-amber-600/30 group-hover:scale-110 transition-transform">
-                  <span className="font-display font-bold text-2xl text-amber-500">RW</span>
+                <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/5 border border-white/10 p-2 group-hover:scale-110 transition-transform">
+                  <img src="/images/Race Rewards Logo.png" alt="Race Rewards" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="flex-grow text-center md:text-left">
@@ -881,7 +881,7 @@ export default function App() {
                 <p className="text-gray-400 text-sm leading-relaxed">Claim free rewards by signing up to <strong className="text-white">Race Rewards</strong> — and discover your next race. Because every finish line deserves a reward.</p>
               </div>
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="bg-amber-600 text-white px-6 py-3 rounded-full text-sm font-bold text-center group-hover:bg-amber-500 transition-all flex items-center justify-center gap-2">
+                <div className="btn-partner-amber px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
                   Claim Rewards <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>

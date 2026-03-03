@@ -12,33 +12,55 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-brand-dark text-white;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-display font-bold tracking-tight;
   }
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes tipton-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes tipton-glow {
-  0%, 100% { 
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
   }
-  50% { 
+
+  50% {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.3));
   }
 }
@@ -65,31 +87,37 @@
 
 .red-gradient {
   background: radial-gradient(circle at top right, rgba(155, 28, 28, 0.15), transparent),
-              radial-gradient(circle at bottom left, rgba(155, 28, 28, 0.05), transparent);
+    radial-gradient(circle at bottom left, rgba(155, 28, 28, 0.05), transparent);
 }
 
 @keyframes steel-shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .text-gradient {
-  background: linear-gradient(
-    90deg, 
-    #64748b 0%, 
-    #f1f5f9 20%, 
-    #9b1c1c 50%, 
-    #f1f5f9 80%, 
-    #64748b 100%
-  );
+  background: linear-gradient(90deg,
+      #64748b 0%,
+      #f1f5f9 20%,
+      #9b1c1c 50%,
+      #f1f5f9 80%,
+      #64748b 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: steel-shimmer 6s ease-in-out infinite;
   display: inline-block;
-  filter: drop-shadow(0 0 1px rgba(255,255,255,0.1));
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.1));
 }
 
 .spline-container {
@@ -100,9 +128,47 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   @apply bg-brand-dark;
 }
+
 ::-webkit-scrollbar-thumb {
   @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* Partner button animations */
+@keyframes btn-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn-partner-green {
+  background: linear-gradient(135deg, #15803d, #22c55e, #15803d, #059669);
+  background-size: 300% 300%;
+  animation: btn-shimmer 4s ease infinite;
+  @apply text-white shadow-lg shadow-green-600/20 hover:shadow-green-600/40 hover:scale-105 active:scale-95 transition-transform duration-300;
+}
+
+.btn-partner-emerald {
+  background: linear-gradient(135deg, #047857, #10b981, #047857, #059669);
+  background-size: 300% 300%;
+  animation: btn-shimmer 4s ease infinite;
+  @apply text-white shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/40 hover:scale-105 active:scale-95 transition-transform duration-300;
+}
+
+.btn-partner-amber {
+  background: linear-gradient(135deg, #b45309, #f59e0b, #b45309, #d97706);
+  background-size: 300% 300%;
+  animation: btn-shimmer 4s ease infinite;
+  @apply text-white shadow-lg shadow-amber-600/20 hover:shadow-amber-600/40 hover:scale-105 active:scale-95 transition-transform duration-300;
 }
