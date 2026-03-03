@@ -966,7 +966,7 @@ export default function App() {
 
           {/* ReplyHero Credit */}
           <div className="mt-8 text-center">
-            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-700 hover:text-gray-500 transition-colors tracking-wider">
+            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-gray-400 transition-colors tracking-wider">
               Website by <span className="font-bold">ReplyHero</span> — Websites & Digital Media serving the Black Country
             </a>
           </div>
