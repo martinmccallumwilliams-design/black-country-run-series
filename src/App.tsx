@@ -876,7 +876,7 @@ export default function App() {
                 <li><a href="/legal#terms" className="hover:text-white transition-colors">Terms & Conditions</a></li>
                 <li><a href="/legal#cookies" className="hover:text-white transition-colors">Cookie Policy</a></li>
                 <li><a href="/legal#refunds" className="hover:text-white transition-colors">Refund Policy</a></li>
-                <li><a href="mailto:contact@blackcountryrunseries.co.uk" className="hover:text-white transition-colors">Contact Us</a></li>
+                <li><a href="mailto:contact@blackcountryrun.co.uk" className="hover:text-white transition-colors">Contact Us</a></li>
               </ul>
             </div>
           </div>

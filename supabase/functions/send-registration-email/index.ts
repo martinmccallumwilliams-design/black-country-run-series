@@ -43,7 +43,7 @@ Deno.serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Black Country Run Series <noreply@blackcountryrunseries.co.uk>",
+        from: "Black Country Run Series <noreply@blackcountryrun.co.uk>",
         to: [email],
         cc: ADMIN_EMAIL ? [ADMIN_EMAIL] : [],
         subject: `You're on the priority list, ${first_name}! 🏃`,
@@ -134,7 +134,7 @@ Deno.serve(async (req) => {
 
               <!-- CTA -->
               <div style="text-align: center; margin-bottom: 8px;">
-                <a href="https://blackcountryrunseries.co.uk" style="display: inline-block; background: linear-gradient(135deg, #9b1c1c, #dc2626); color: white; font-weight: bold; font-size: 14px; padding: 14px 32px; border-radius: 12px; text-decoration: none; letter-spacing: 0.5px;">
+                <a href="https://blackcountryrun.co.uk" style="display: inline-block; background: linear-gradient(135deg, #9b1c1c, #dc2626); color: white; font-weight: bold; font-size: 14px; padding: 14px 32px; border-radius: 12px; text-decoration: none; letter-spacing: 0.5px;">
                   Visit the Website
                 </a>
               </div>

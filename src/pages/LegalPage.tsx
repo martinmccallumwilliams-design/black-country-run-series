@@ -64,8 +64,8 @@ const LegalPage = () => {
                                     window.history.replaceState(null, '', `/legal#${s.id}`);
                                 }}
                                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${activeSection === s.id
-                                        ? 'bg-brand-red text-white shadow-lg shadow-brand-red/20'
-                                        : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                                    ? 'bg-brand-red text-white shadow-lg shadow-brand-red/20'
+                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                                     }`}
                             >
                                 <Icon size={16} />
@@ -98,8 +98,8 @@ const LegalPage = () => {
                     <p className="text-gray-400 mb-2">
                         For any data protection queries, requests or complaints:
                     </p>
-                    <a href="mailto:contact@blackcountryrunseries.co.uk" className="text-brand-red hover:underline font-semibold">
-                        contact@blackcountryrunseries.co.uk
+                    <a href="mailto:contact@blackcountryrun.co.uk" className="text-brand-red hover:underline font-semibold">
+                        contact@blackcountryrun.co.uk
                     </a>
                     <p className="text-gray-500 text-sm mt-4">
                         Data Controller: Tipton Harriers Sub-Committee — Black Country Run Series
@@ -196,7 +196,7 @@ const PrivacyPolicy = () => (
                 <li>Lodge a complaint with the <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer" className="text-brand-red hover:underline">Information Commissioner's Office (ICO)</a></li>
             </ul>
             <p className="mt-2">
-                Requests can be made via: <a href="mailto:contact@blackcountryrunseries.co.uk" className="text-brand-red hover:underline">contact@blackcountryrunseries.co.uk</a>
+                Requests can be made via: <a href="mailto:contact@blackcountryrun.co.uk" className="text-brand-red hover:underline">contact@blackcountryrun.co.uk</a>
             </p>
         </Section>
 
@@ -331,11 +331,11 @@ const RefundPolicy = () => (
         </Section>
 
         <Section title="Entry Transfers">
-            <p>Entries may be transferred to another person before the published transfer deadline. Contact us at <a href="mailto:contact@blackcountryrunseries.co.uk" className="text-brand-red hover:underline">contact@blackcountryrunseries.co.uk</a> to arrange a transfer.</p>
+            <p>Entries may be transferred to another person before the published transfer deadline. Contact us at <a href="mailto:contact@blackcountryrun.co.uk" className="text-brand-red hover:underline">contact@blackcountryrun.co.uk</a> to arrange a transfer.</p>
         </Section>
 
         <Section title="How to Request a Refund">
-            <p>If you believe you are entitled to a refund, please email <a href="mailto:contact@blackcountryrunseries.co.uk" className="text-brand-red hover:underline">contact@blackcountryrunseries.co.uk</a> with your name, email used for registration, and reason for the request.</p>
+            <p>If you believe you are entitled to a refund, please email <a href="mailto:contact@blackcountryrun.co.uk" className="text-brand-red hover:underline">contact@blackcountryrun.co.uk</a> with your name, email used for registration, and reason for the request.</p>
         </Section>
     </div>
 );
