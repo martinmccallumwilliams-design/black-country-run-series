@@ -107,15 +107,16 @@ const Navbar = () => {
   );
 };
 
-const RaceCard = ({ title, date, location, type, idealFor, highlight, images }: { title: string, date: string, location: string, type: string, idealFor: string[], highlight: string, images: string[] }) => {
+const RaceCard = ({ title, date, location, type, idealFor, highlight, images, firstImageHoldTime = 4000 }: { title: string, date: string, location: string, type: string, idealFor: string[], highlight: string, images: string[], firstImageHoldTime?: number }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const delay = currentImageIndex === 0 ? firstImageHoldTime : 4000;
+    const timer = setTimeout(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [images.length]);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [currentImageIndex, images.length, firstImageHoldTime]);
 
   return (
     <motion.div
@@ -479,10 +480,13 @@ export default function App() {
               type="Trail / Off-road"
               highlight="Undulating woodland trails with a scenic summer evening atmosphere."
               idealFor={['Trail Runners', 'Strength Focused', 'XC Enthusiasts']}
+              firstImageHoldTime={8000}
               images={[
-                "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&fit=crop&q=80&w=800"
+                "/images/Andy Holden 5k.png",
+                "/images/Baggeridge 5k Race Scene.png",
+                "/images/Baggeridge Chimney.png",
+                "/images/Baggeridge Bridge.png",
+                "/images/Baggeridge Path.png"
               ]}
             />
             <RaceCard
