@@ -446,19 +446,17 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/BCR Cover Photo.png"
-                  alt="Black Country Run Series preview"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl max-w-xs">
-                <p className="text-sm font-medium italic">"...an exciting opportunity to be part of the first Black Country Run Series!"</p>
-                <p className="text-xs font-bold text-brand-red mt-3 uppercase tracking-wider">— Local Club Runner</p>
-              </div>
+            <div className="aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-red/5">
+              <motion.img
+                initial={{ filter: "grayscale(100%)" }}
+                whileInView={{ filter: "grayscale(0%)" }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                src="/images/BCR Cover Photo.png"
+                alt="Black Country Run Series preview"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
