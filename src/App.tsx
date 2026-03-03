@@ -966,9 +966,8 @@ export default function App() {
 
           {/* ReplyHero Credit */}
           <div className="mt-8 text-center">
-            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-xs text-gray-600 hover:text-gray-400 transition-colors tracking-wider group">
-              <span>Website by</span>
-              <img src="/images/ReplyHero Logo.png" alt="ReplyHero" className="h-6 opacity-50 group-hover:opacity-80 transition-opacity" />
+            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-gray-400 transition-colors tracking-wider">
+              Website by <span className="font-bold">ReplyHero</span> — Websites & Digital Media serving the Black Country
             </a>
           </div>
         </div>
