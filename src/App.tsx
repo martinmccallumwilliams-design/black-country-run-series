@@ -125,34 +125,25 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
     >
       <div className="h-[320px] overflow-hidden relative bg-black">
         <AnimatePresence mode="wait">
-          {currentImageIndex === 0 ? (
-            <motion.div
-              key="poster"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full"
-            >
-              {/* Blurred background filler to make it look premium without black bars */}
-              <img src={images[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 blur-2xl scale-125 saturate-150" referrerPolicy="no-referrer" aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/90 z-0" />
-              {/* Actual uncropped logo floating in the middle */}
-              <img src={images[0]} alt={`${title} Cover`} className="absolute inset-0 w-full h-full object-contain p-8 z-10 drop-shadow-[0_20px_20px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-1000" referrerPolicy="no-referrer" />
-            </motion.div>
-          ) : (
-            <motion.img
-              key={currentImageIndex}
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {/* Blurred background filler to make it look premium without black bars */}
+            <img src={images[currentImageIndex]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 blur-2xl scale-125 saturate-150 group-hover:scale-150 transition-transform duration-1000" referrerPolicy="no-referrer" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/90 z-0 pointer-events-none" />
+            {/* Actual uncropped image floating in the middle */}
+            <img
               src={images[currentImageIndex]}
               alt={`${title} - ${currentImageIndex + 1}`}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              className={`absolute inset-0 w-full h-full object-contain z-10 drop-shadow-[0_20px_20px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-1000 ${currentImageIndex === 0 ? 'p-8' : 'p-0'}`}
               referrerPolicy="no-referrer"
             />
-          )}
+          </motion.div>
         </AnimatePresence>
 
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent z-20 pointer-events-none" />
