@@ -121,37 +121,54 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
   return (
     <motion.div
       whileHover={{ y: -10 }}
-      className="glass rounded-2xl overflow-hidden flex flex-col h-full group relative border border-white/10 hover:border-brand-red/50 transition-colors duration-500"
+      className="bg-brand-dark/50 backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col h-full group relative border border-white/5 shadow-2xl shadow-black hover:border-brand-red/30 hover:shadow-brand-red/10 transition-all duration-700"
     >
-      <div className="h-56 overflow-hidden relative">
+      <div className="h-[320px] overflow-hidden relative bg-black">
         <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImageIndex}
-            src={images[currentImageIndex]}
-            alt={`${title} - ${currentImageIndex + 1}`}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+          {currentImageIndex === 0 ? (
+            <motion.div
+              key="poster"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              {/* Blurred background filler to make it look premium without black bars */}
+              <img src={images[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 blur-2xl scale-125 saturate-150" referrerPolicy="no-referrer" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/90 z-0" />
+              {/* Actual uncropped logo floating in the middle */}
+              <img src={images[0]} alt={`${title} Cover`} className="absolute inset-0 w-full h-full object-contain p-8 z-10 drop-shadow-[0_20px_20px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-1000" referrerPolicy="no-referrer" />
+            </motion.div>
+          ) : (
+            <motion.img
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
+              alt={`${title} - ${currentImageIndex + 1}`}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              referrerPolicy="no-referrer"
+            />
+          )}
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent z-20 pointer-events-none" />
 
-        {/* Carousel Indicators */}
-        <div className="absolute bottom-4 right-4 flex gap-1.5 z-20">
+        {/* Carousel Indicators - Glassmorphic */}
+        <div className="absolute top-4 right-4 flex gap-1.5 z-30 bg-black/40 backdrop-blur-md px-3 py-2 rounded-full border border-white/10 shadow-xl">
           {images.map((_, idx) => (
             <div
               key={idx}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex ? 'bg-brand-red w-4' : 'bg-white/30'}`}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${idx === currentImageIndex ? 'bg-brand-red w-4 shadow-[0_0_10px_rgba(220,38,38,0.8)]' : 'bg-white/40'}`}
             />
           ))}
         </div>
 
-        <div className="absolute bottom-4 left-4 z-20">
-          <span className="bg-brand-red text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded shadow-lg shadow-black/50">{type}</span>
+        <div className="absolute bottom-6 left-6 z-30">
+          <span className="bg-brand-red text-[10px] uppercase font-bold tracking-[0.2em] px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(220,38,38,0.3)] border border-brand-red/50">{type}</span>
         </div>
       </div>
 
