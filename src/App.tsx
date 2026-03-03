@@ -563,17 +563,28 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="aspect-square glass rounded-3xl flex items-center justify-center p-12 relative">
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                  <div className="w-64 h-64 border-8 border-dashed border-white/20 rounded-full animate-spin-slow" />
-                </div>
-                <div className="text-center">
-                  <Trophy size={120} className="text-brand-red mx-auto mb-6" />
-                  <p className="font-display font-bold text-2xl uppercase tracking-widest text-white/40">Medal Visual <br /> Coming Soon</p>
-                </div>
+            <div className="order-2 md:order-1 relative group perspective-1000">
+              <motion.div
+                animate={{ y: [-15, 15, -15], rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                className="aspect-square relative z-10 p-8 flex items-center justify-center"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-red/30 to-transparent blur-[80px] opacity-0 group-hover:opacity-70 transition-opacity duration-1000 rounded-full" />
+
+                <img
+                  src="/images/BCR Medal.png"
+                  alt="Black Country Run Series Complete Interlocking Medal"
+                  className="w-full h-full object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)] filter brightness-110 contrast-125"
+                />
+              </motion.div>
+
+              {/* Spinning technical accents */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 max-w-full">
+                <div className="absolute w-[90%] h-[90%] border-[2px] border-dashed border-white/10 rounded-full animate-spin-slow opacity-50" />
+                <div className="absolute w-[80%] h-[80%] border-[1px] border-brand-red/20 rounded-full" style={{ animation: 'spin 20s linear infinite reverse' }} />
               </div>
             </div>
+
             <div className="order-1 md:order-2">
               <span className="text-brand-red font-bold uppercase tracking-widest text-xs mb-4 block">The Ultimate Reward</span>
               <h2 className="text-4xl md:text-6xl mb-8">ONE INTERLOCKING <br /> SERIES MEDAL</h2>
