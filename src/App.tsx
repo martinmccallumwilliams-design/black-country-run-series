@@ -373,8 +373,8 @@ export default function App() {
             <h1 className="text-5xl md:text-8xl mb-6 leading-[0.9] text-gradient">
               BLACK COUNTRY <br /> RUN SERIES
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium leading-relaxed italic border-l-4 border-brand-red pl-6 py-2">
-              "...an exciting opportunity to be part of the first Black Country Run Series!"
+            <p className="text-lg md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-medium">
+              Three evening 5Ks. One interlocking medal. <br className="hidden md:block" /> One unforgettable summer.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -449,14 +449,14 @@ export default function App() {
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden border border-white/10">
                 <img
-                  src="https://picsum.photos/seed/runners/800/800"
-                  alt="Runners competing"
+                  src="/images/BCR Cover Photo.png"
+                  alt="Black Country Run Series preview"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl max-w-xs">
-                <p className="text-sm font-medium italic">"The atmosphere at the evening races is unmatched. It's the highlight of my summer running calendar."</p>
+                <p className="text-sm font-medium italic">"...an exciting opportunity to be part of the first Black Country Run Series!"</p>
                 <p className="text-xs font-bold text-brand-red mt-3 uppercase tracking-wider">— Local Club Runner</p>
               </div>
             </div>
