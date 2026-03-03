@@ -486,6 +486,7 @@ export default function App() {
               firstImageHoldTime={8000}
               images={[
                 "/images/Andy Holden 5k Logo.png",
+                "/images/Andy Holden 5k.png",
                 "/images/Baggeridge 5k Race Scene.png",
                 "/images/Baggeridge Chimney.png",
                 "/images/Baggeridge Bridge.png",
@@ -502,6 +503,7 @@ export default function App() {
               firstImageHoldTime={8000}
               images={[
                 "/images/GWR 5k Logo.png",
+                "/images/GWR 5k.png",
                 "/images/South Staffs Railway walk sign.png",
                 "/images/GWR 5k 2025 Amy Hadley.png",
                 "/images/GWR 5k 2025 Halesowen Runner.png",
@@ -519,6 +521,7 @@ export default function App() {
               firstImageHoldTime={8000}
               images={[
                 "/images/Dudley Zoo 5k Logo.png",
+                "/images/Dudley Zoo 5k.png",
                 "/images/Dudley Castle.png",
                 "/images/Meerkat.png"
               ]}
