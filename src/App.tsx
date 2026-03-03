@@ -43,7 +43,7 @@ const Navbar = () => {
     { name: 'Series', href: '#series' },
     { name: 'Races', href: '#races' },
     { name: 'Prices', href: '#prices' },
-    { name: 'Enter', href: '/enter' },
+    { name: 'Register', href: '#register' },
     { name: 'Results', href: '/results' },
     { name: 'FAQ', href: '#faq' },
   ];
@@ -63,8 +63,8 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <a href="/enter" className="btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold">
-            Enter Now
+          <a href="#register" className="btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold">
+            Register Interest
           </a>
         </div>
 
@@ -94,11 +94,11 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="/enter"
+              href="#register"
               className="bg-brand-red text-white py-3 rounded-lg text-center font-bold"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Enter Now
+              Register Interest
             </a>
           </motion.div>
         )}
@@ -183,8 +183,8 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
             </div>
           </div>
         </div>
-        <a href="/enter" className="flex items-center justify-between w-full py-3 px-4 bg-white/5 hover:bg-brand-red/10 border border-white/10 hover:border-brand-red/30 rounded-xl transition-all text-sm font-bold group/btn">
-          Enter Now
+        <a href="#register" className="flex items-center justify-between w-full py-3 px-4 bg-white/5 hover:bg-brand-red/10 border border-white/10 hover:border-brand-red/30 rounded-xl transition-all text-sm font-bold group/btn">
+          Register Interest
           <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
         </a>
       </div>
@@ -375,7 +375,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block bg-brand-red/20 text-brand-red text-xs font-bold tracking-[0.3em] uppercase px-4 py-2 rounded-full mb-6 border border-brand-red/30">
-              Summer 2026 Series
+              Entries Opening Soon — Register Now
             </span>
             <h1 className="text-5xl md:text-8xl mb-6 leading-[0.9] text-gradient">
               BLACK COUNTRY <br /> RUN SERIES
@@ -385,8 +385,8 @@ export default function App() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <a href="/enter" className="w-full sm:w-auto btn-gradient text-white px-8 py-4 rounded-full font-bold text-lg">
-                Enter Now
+              <a href="#register" className="w-full sm:w-auto btn-gradient text-white px-8 py-4 rounded-full font-bold text-lg">
+                Register Your Interest
               </a>
               <a href="#races" className="w-full sm:w-auto glass hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
                 View the 3 Races
@@ -469,7 +469,7 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-8">
             <RaceCard
               title="Andy Holden 5K"
-              date="Wed 8th July"
+              date="Wed 8th July • 7:15pm"
               location="Baggeridge Country Park"
               type="Trail / Off-road"
               highlight="Undulating woodland trails with a scenic summer evening atmosphere."
@@ -486,7 +486,7 @@ export default function App() {
             />
             <RaceCard
               title="GWR 5K"
-              date="Thu 23rd July"
+              date="Thu 23rd July • 7:15pm"
               location="Railway Walk, Wombourne"
               type="Fast & Flat"
               highlight="14:11 winning time last year! EA measured and licensed for official PBs."
@@ -504,7 +504,7 @@ export default function App() {
             />
             <RaceCard
               title="Dudley Zoo 5K"
-              date="Wed 29th July"
+              date="Wed 29th July • 7:15pm"
               location="Dudley Zoo and Castle"
               type="Unique Experience"
               highlight="Starting and finishing in the historic Castle Grounds. Sport meets heritage."
@@ -639,35 +639,39 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl mb-4">ENTRY OPTIONS</h2>
-            <p className="text-gray-400">Secure your spot early for the best rates. Places are strictly limited.</p>
+            <p className="text-gray-400 max-w-2xl mx-auto">Series entry guarantees your place in all 3 races. Individual entries will open later, subject to availability.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Series Entry */}
             <div className="glass p-8 rounded-3xl border-brand-red/30 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">Best Value</div>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">Guaranteed Entry</div>
               <h3 className="text-2xl mb-2">Full Series Entry</h3>
-              <p className="text-gray-400 text-sm mb-6">Access to all 3 races + Interlocking Medal</p>
+              <p className="text-gray-400 text-sm mb-6">Guaranteed entry to all 3 races + Interlocking Medal</p>
               <div className="flex items-baseline gap-2 mb-8">
                 <span className="text-5xl font-display font-bold">£35</span>
                 <span className="text-gray-500 line-through">£45</span>
                 <span className="text-brand-red text-xs font-bold uppercase tracking-wider ml-2">Early Bird</span>
               </div>
               <ul className="space-y-4 mb-8">
-                {['All 3 Race Entries', 'Complete Interlocking Medal', 'Series Points Competition', 'Priority Support'].map(item => (
+                {['Guaranteed Race Entry to All Events', 'Complete Interlocking Medal', 'Series Points Competition', 'Early Bird Pricing'].map(item => (
                   <li key={item} className="flex items-center gap-3 text-sm text-gray-300">
                     <CheckCircle2 size={16} className="text-brand-red" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <a href="/enter" className="block w-full btn-gradient text-white text-center py-4 rounded-xl font-bold">
-                Enter Now
+              <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-xl font-bold">
+                Register for Priority Access
               </a>
+              <p className="text-[10px] text-center text-gray-500 uppercase tracking-widest mt-3">
+                Register now for 48hr priority entry window
+              </p>
             </div>
 
             {/* Individual Entry */}
-            <div className="glass p-8 rounded-3xl">
+            <div className="glass p-8 rounded-3xl relative opacity-80">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white/10 text-gray-300 text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full border border-white/10">Coming Soon</div>
               <h3 className="text-2xl mb-2">Individual Race</h3>
               <p className="text-gray-400 text-sm mb-6">Entry to any single race in the series</p>
               <div className="flex items-baseline gap-2 mb-8">
@@ -682,9 +686,12 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              <a href="/enter" className="block w-full bg-white/5 hover:bg-white/10 text-white text-center py-4 rounded-xl font-bold transition-all border border-white/10">
-                Enter Now
-              </a>
+              <div className="block w-full bg-white/5 text-gray-400 text-center py-4 rounded-xl font-bold border border-white/10 cursor-not-allowed">
+                Opening Later — Subject to Availability
+              </div>
+              <p className="text-[10px] text-center text-gray-500 uppercase tracking-widest mt-3">
+                Series entrants get first access to all races
+              </p>
             </div>
           </div>
         </div>
@@ -739,10 +746,11 @@ export default function App() {
             {[
               { q: 'Is it suitable for beginners?', a: 'Absolutely! While we have elite runners, the series is open to all abilities. We have a friendly, supportive atmosphere.' },
               { q: 'Are the courses traffic-free?', a: 'Yes, all three races are held on traffic-free courses for your safety and enjoyment.' },
-              { q: 'When do entries open?', a: 'General entries open in April. Register your interest now for priority access and early bird pricing.' },
-              { q: 'Can I enter individual races?', a: 'Yes, you can enter single races for £15 each, or the full series for the best value.' },
+              { q: 'When do entries open?', a: 'Entries will be opening soon! Register your interest now and you\'ll receive a 48-hour priority entry window before entries open to the general public. You\'ll be the first to know.' },
+              { q: 'Can I enter individual races?', a: 'Full series entries open first and guarantee your place in all 3 races. Individual race entries will open later, subject to availability. We recommend the series entry for the best value and guaranteed entry.' },
               { q: 'Is the GWR 5K officially measured?', a: 'Yes, the GWR 5K is England Athletics measured and licensed. Your time will appear on Power of 10.' },
-              { q: 'Are places limited?', a: 'Yes, due to venue capacities, places are strictly limited. We recommend registering early.' },
+              { q: 'What do I get for registering my interest?', a: 'By registering your interest, you\'ll get a 48-hour priority entry window before general release, access to early bird pricing, and be the first to see event updates including the 2026 medal design.' },
+              { q: 'Are places limited?', a: 'Yes, due to venue capacities, places are strictly limited. Series entrants are guaranteed entry to all 3 races. Individual race entries will be subject to remaining availability, so we strongly recommend the series entry.' },
             ].map((item, i) => (
               <details key={i} className="glass rounded-2xl group">
                 <summary className="p-6 cursor-pointer font-bold flex items-center justify-between list-none">
@@ -769,13 +777,14 @@ export default function App() {
                 GET <span className="text-brand-red">PRIORITY</span> <br /> ACCESS
               </h2>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Don't miss out on the summer's most iconic race series. Register your interest today to receive:
+                Entries are opening soon. Register your interest today and be first in line when they go live.
               </p>
               <ul className="space-y-6">
                 {[
-                  { title: '48h Priority Window', desc: 'Secure your spot before general release.' },
-                  { title: 'Early Bird Pricing', desc: 'Lock in the lowest possible entry fee.' },
-                  { title: 'Event Updates', desc: 'Be the first to see the 2026 medal design.' },
+                  { title: '48hr Priority Entry Window', desc: 'Get exclusive early access to enter before the general public.' },
+                  { title: 'Early Bird Pricing', desc: 'Lock in the lowest possible entry fee — series entry from just £35.' },
+                  { title: 'Guaranteed Entry', desc: 'Series entrants are guaranteed a place in all 3 races.' },
+                  { title: 'Event Updates', desc: 'Be the first to see the 2026 medal design and course details.' },
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-4">
                     <div className="w-6 h-6 bg-brand-red rounded-full flex items-center justify-center shrink-0 mt-1">
@@ -823,7 +832,7 @@ export default function App() {
               <ul className="space-y-4 text-sm text-gray-500">
                 <li><a href="#series" className="hover:text-white transition-colors">Series Overview</a></li>
                 <li><a href="#races" className="hover:text-white transition-colors">Race Calendar</a></li>
-                <li><a href="/enter" className="hover:text-white transition-colors">Enter Now</a></li>
+                <li><a href="#register" className="hover:text-white transition-colors">Register Interest</a></li>
                 <li><a href="/results" className="hover:text-white transition-colors">Results</a></li>
               </ul>
             </div>
@@ -849,8 +858,8 @@ export default function App() {
 
       {/* Mobile Sticky CTA */}
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-        <a href="/enter" className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold">
-          Enter Now
+        <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold">
+          Register Your Interest
         </a>
       </div>
     </div>

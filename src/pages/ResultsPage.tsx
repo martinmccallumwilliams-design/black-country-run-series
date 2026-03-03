@@ -17,9 +17,9 @@ import {
 import { getResults, type RaceResult } from '../lib/supabase';
 
 const RACE_TABS = [
-    { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July' },
-    { id: 'GWR 5K', name: 'GWR 5K', date: 'Thu 23rd July' },
-    { id: 'Dudley Zoo 5K', name: 'Dudley Zoo 5K', date: 'Wed 29th July' },
+    { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July • 7:15pm' },
+    { id: 'GWR 5K', name: 'GWR 5K', date: 'Thu 23rd July • 7:15pm' },
+    { id: 'Dudley Zoo 5K', name: 'Dudley Zoo 5K', date: 'Wed 29th July • 7:15pm' },
 ];
 
 export default function ResultsPage() {
@@ -90,8 +90,8 @@ export default function ResultsPage() {
                             key={race.id}
                             onClick={() => setActiveRace(race.id)}
                             className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${activeRace === race.id
-                                    ? 'btn-gradient text-white'
-                                    : 'glass text-gray-400 hover:text-white hover:bg-white/10'
+                                ? 'btn-gradient text-white'
+                                : 'glass text-gray-400 hover:text-white hover:bg-white/10'
                                 }`}
                         >
                             {race.name}
@@ -117,8 +117,8 @@ export default function ResultsPage() {
                                 key={g}
                                 onClick={() => setGenderFilter(g)}
                                 className={`px-4 py-3 rounded-xl text-sm font-bold transition-all border ${genderFilter === g
-                                        ? 'bg-brand-red border-brand-red text-white'
-                                        : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                                    ? 'bg-brand-red border-brand-red text-white'
+                                    : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
                                     }`}
                             >
                                 {g === 'all' ? 'All' : g === 'M' ? 'Men' : 'Women'}

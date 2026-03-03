@@ -82,6 +82,18 @@ export async function submitRegistration(data: Omit<Registration, 'id' | 'create
     .insert([data]);
 
   if (error) throw error;
+
+  // Send confirmation email in the background (don't block registration)
+  try {
+    await supabase.functions.invoke('send-registration-email', {
+      body: { record: data },
+    });
+    console.log('📧 Confirmation email sent');
+  } catch (emailError) {
+    // Email failure shouldn't prevent registration success
+    console.warn('⚠️ Confirmation email failed:', emailError);
+  }
+
   return { ...data, id: 'submitted' };
 }
 

@@ -16,9 +16,9 @@ import {
 import { submitEntry } from '../lib/supabase';
 
 const RACES = [
-    { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July', location: 'Baggeridge Country Park' },
-    { id: 'GWR 5K', name: 'GWR 5K', date: 'Thu 23rd July', location: 'Railway Walk, Wombourne' },
-    { id: 'Dudley Zoo 5K', name: 'Dudley Zoo 5K', date: 'Wed 29th July', location: 'Dudley Zoo and Castle' },
+    { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July • 7:15pm', location: 'Baggeridge Country Park' },
+    { id: 'GWR 5K', name: 'GWR 5K', date: 'Thu 23rd July • 7:15pm', location: 'Railway Walk, Wombourne' },
+    { id: 'Dudley Zoo 5K', name: 'Dudley Zoo 5K', date: 'Wed 29th July • 7:15pm', location: 'Dudley Zoo and Castle' },
 ];
 
 type EntryType = 'series' | 'individual';
@@ -166,8 +166,8 @@ export default function EntryPage() {
                         <React.Fragment key={i}>
                             <div
                                 className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all ${i + 1 <= step
-                                        ? 'bg-brand-red border-brand-red text-white'
-                                        : 'border-white/20 text-gray-500'
+                                    ? 'bg-brand-red border-brand-red text-white'
+                                    : 'border-white/20 text-gray-500'
                                     }`}
                             >
                                 {i + 1 <= step && step > i + 1 ? <CheckCircle2 size={18} /> : i + 1}
@@ -246,8 +246,8 @@ export default function EntryPage() {
                                                 key={g}
                                                 type="button"
                                                 className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all border ${form.gender === g
-                                                        ? 'bg-brand-red border-brand-red text-white'
-                                                        : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                                                    ? 'bg-brand-red border-brand-red text-white'
+                                                    : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
                                                     }`}
                                                 onClick={() => update('gender', g)}
                                             >
@@ -298,8 +298,8 @@ export default function EntryPage() {
                                 type="button"
                                 onClick={() => update('entryType', 'series')}
                                 className={`p-6 rounded-2xl text-left transition-all border-2 ${form.entryType === 'series'
-                                        ? 'border-brand-red bg-brand-red/10'
-                                        : 'border-white/10 bg-white/5 hover:bg-white/10'
+                                    ? 'border-brand-red bg-brand-red/10'
+                                    : 'border-white/10 bg-white/5 hover:bg-white/10'
                                     }`}
                             >
                                 <div className="text-xs font-bold uppercase tracking-wider text-brand-red mb-2">Best Value</div>
@@ -313,8 +313,8 @@ export default function EntryPage() {
                                 type="button"
                                 onClick={() => update('entryType', 'individual')}
                                 className={`p-6 rounded-2xl text-left transition-all border-2 ${form.entryType === 'individual'
-                                        ? 'border-brand-red bg-brand-red/10'
-                                        : 'border-white/10 bg-white/5 hover:bg-white/10'
+                                    ? 'border-brand-red bg-brand-red/10'
+                                    : 'border-white/10 bg-white/5 hover:bg-white/10'
                                     }`}
                             >
                                 <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Flexible</div>
@@ -332,8 +332,8 @@ export default function EntryPage() {
                                     <label
                                         key={race.id}
                                         className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all border ${form.races.includes(race.id)
-                                                ? 'bg-brand-red/10 border-brand-red'
-                                                : 'bg-white/5 border-white/10 hover:bg-white/10'
+                                            ? 'bg-brand-red/10 border-brand-red'
+                                            : 'bg-white/5 border-white/10 hover:bg-white/10'
                                             }`}
                                     >
                                         <input
