@@ -690,10 +690,10 @@ export default function App() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-brand-red/10 border border-white/5">
-                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=400&h=600" alt="Female runner celebrating" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
+                <img src="/images/Sale5MileWinner.jpg" alt="Sale 5 Mile Winner" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
               </div>
               <div className="aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-2xl shadow-brand-red/10 border border-white/5">
-                <img src="https://images.unsplash.com/photo-1552674605-15c2145efa38?auto=format&fit=crop&q=80&w=400&h=600" alt="Male runner celebrating finish" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
+                <img src="/images/GroupFinishPhoto.jpg" alt="Runners celebrating finish" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
               </div>
             </div>
           </div>
