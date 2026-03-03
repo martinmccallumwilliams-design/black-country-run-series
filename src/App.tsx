@@ -496,10 +496,14 @@ export default function App() {
               type="Fast & Flat"
               highlight="14:11 winning time last year! EA measured and licensed for official PBs."
               idealFor={['PB Hunters', 'Club Runners', 'First-timers']}
+              firstImageHoldTime={8000}
               images={[
-                "/IMG_6680.jpeg",
-                "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1444491741275-3747c53c99b4?auto=format&fit=crop&q=80&w=800"
+                "/images/GWR 5k.png",
+                "/images/South Staffs Railway walk sign.png",
+                "/images/GWR 5k 2025 Amy Hadley.png",
+                "/images/GWR 5k 2025 Halesowen Runner.png",
+                "/images/GWR 5k 2025 Start.png",
+                "/images/1st Place Woman GWR 5k 2025.png"
               ]}
             />
             <RaceCard
@@ -509,10 +513,11 @@ export default function App() {
               type="Unique Experience"
               highlight="Starting and finishing in the historic Castle Grounds. Sport meets heritage."
               idealFor={['Families', 'Fun Runners', 'Experience Seekers']}
+              firstImageHoldTime={8000}
               images={[
-                "https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1581262177000-8139a463e531?auto=format&fit=crop&q=80&w=800",
-                "https://images.unsplash.com/photo-1564507592333-c60657eaa0ae?auto=format&fit=crop&q=80&w=800"
+                "/images/Dudley Zoo 5k.png",
+                "/images/Dudley Castle.png",
+                "/images/Meerkat.png"
               ]}
             />
           </div>
