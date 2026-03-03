@@ -595,7 +595,7 @@ export default function App() {
                 <motion.h2
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ margin: "-50px" }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-r from-brand-red to-red-400 bg-clip-text text-transparent"
                 >
@@ -604,7 +604,7 @@ export default function App() {
                 <motion.h2
                   initial={{ y: 50, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ margin: "-50px" }}
                   transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                   className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-b from-gray-100 to-gray-400 bg-clip-text text-transparent"
                 >
@@ -613,7 +613,7 @@ export default function App() {
                 <motion.h2
                   initial={{ x: 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ margin: "-50px" }}
                   transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                   className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-l from-brand-red to-red-400 bg-clip-text text-transparent"
                 >
