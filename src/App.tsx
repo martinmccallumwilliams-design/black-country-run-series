@@ -173,11 +173,19 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
       </div>
 
       <div className="p-6 flex-grow flex flex-col relative z-10">
-        <div className="flex items-center gap-2 text-brand-red mb-2">
-          <Calendar size={14} />
-          <span className="text-xs font-bold uppercase tracking-wider">{date}</span>
+        <div className="flex justify-between items-start mb-2">
+          <div>
+            <div className="flex items-center gap-2 text-brand-red mb-2">
+              <Calendar size={14} />
+              <span className="text-xs font-bold uppercase tracking-wider">{date}</span>
+            </div>
+            <h3 className="text-2xl mb-2 group-hover:text-brand-red transition-colors pr-2">{title}</h3>
+          </div>
+          <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 border border-white/10 bg-black flex items-center justify-center p-1">
+            {/* The first image in the array is the Logo. We contain it and slightly brighten it. */}
+            <img src={images[0]} alt={`${title} mini logo`} className="w-full h-full object-contain filter contrast-125 saturate-150" referrerPolicy="no-referrer" />
+          </div>
         </div>
-        <h3 className="text-2xl mb-2 group-hover:text-brand-red transition-colors">{title}</h3>
         <div className="flex items-start gap-2 text-gray-400 text-sm mb-4">
           <MapPin size={16} className="shrink-0 mt-0.5" />
           <span>{location}</span>
