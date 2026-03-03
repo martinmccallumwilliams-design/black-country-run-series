@@ -686,16 +686,16 @@ export default function App() {
                     <div className="w-8 h-8 bg-brand-red/20 text-brand-red rounded-lg flex items-center justify-center">2</div>
                     Overall Series Awards
                   </h4>
-                  <p className="text-gray-400 text-sm ml-11">Male & Female Series Champions, age category series winners, and the prestigious Tipton Harriers Club Award.</p>
+                  <p className="text-gray-400 text-sm ml-11">Male, Female, and all Age Groups. We celebrate excellence across the board, plus the prestigious Tipton Harriers Club Award.</p>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden grayscale opacity-50">
-                <img src="https://picsum.photos/seed/running-medal-prizes/400/600" alt="Trophy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl shadow-brand-red/10 border border-white/5">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=400&h=600" alt="Female runner celebrating" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
               </div>
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden mt-8 grayscale opacity-50">
-                <img src="https://picsum.photos/seed/running-podium/400/600" alt="Trophy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden mt-8 shadow-2xl shadow-brand-red/10 border border-white/5">
+                <img src="https://images.unsplash.com/photo-1552674605-15c2145efa38?auto=format&fit=crop&q=80&w=400&h=600" alt="Male runner celebrating finish" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
               </div>
             </div>
           </div>
