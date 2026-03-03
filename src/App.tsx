@@ -375,7 +375,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block bg-brand-red/20 text-brand-red text-xs font-bold tracking-[0.3em] uppercase px-4 py-2 rounded-full mb-6 border border-brand-red/30">
-              Entries Opening Soon — Register Now
+              Summer 2026 • 3 Evening 5K Races
             </span>
             <h1 className="text-5xl md:text-8xl mb-6 leading-[0.9] text-gradient">
               BLACK COUNTRY <br /> RUN SERIES
