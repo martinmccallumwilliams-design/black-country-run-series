@@ -486,7 +486,7 @@ export default function App() {
               idealFor={['Trail Runners', 'Strength Focused', 'XC Enthusiasts']}
               firstImageHoldTime={8000}
               images={[
-                "/images/Andy Holden 5k.png",
+                "/images/Andy Holden 5k Logo.png",
                 "/images/Baggeridge 5k Race Scene.png",
                 "/images/Baggeridge Chimney.png",
                 "/images/Baggeridge Bridge.png",
@@ -502,7 +502,7 @@ export default function App() {
               idealFor={['PB Hunters', 'Club Runners', 'First-timers']}
               firstImageHoldTime={8000}
               images={[
-                "/images/GWR 5k.png",
+                "/images/GWR 5k Logo.png",
                 "/images/South Staffs Railway walk sign.png",
                 "/images/GWR 5k 2025 Amy Hadley.png",
                 "/images/GWR 5k 2025 Halesowen Runner.png",
@@ -519,7 +519,7 @@ export default function App() {
               idealFor={['Families', 'Fun Runners', 'Experience Seekers']}
               firstImageHoldTime={8000}
               images={[
-                "/images/Dudley Zoo 5k.png",
+                "/images/Dudley Zoo 5k Logo.png",
                 "/images/Dudley Castle.png",
                 "/images/Meerkat.png"
               ]}
