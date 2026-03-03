@@ -577,7 +577,7 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="order-2 md:order-1 relative group perspective-1000">
               <motion.div
                 animate={{ y: [-15, 15, -15], rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
@@ -600,13 +600,41 @@ export default function App() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2">
+            <div className="order-1 md:order-2 text-center md:text-left">
               <span className="text-brand-red font-bold uppercase tracking-widest text-xs mb-4 block">The Ultimate Reward</span>
-              <h2 className="text-4xl md:text-6xl mb-8">ONE INTERLOCKING <br /> SERIES MEDAL</h2>
+              <div className="flex flex-col md:flex-row md:flex-wrap gap-x-4 gap-y-2 mb-8 justify-center md:justify-start overflow-hidden py-2">
+                <motion.h2
+                  initial={{ x: -100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-r from-brand-red to-red-400 bg-clip-text text-transparent"
+                >
+                  INTERLOCKING
+                </motion.h2>
+                <motion.h2
+                  initial={{ y: 50, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-b from-gray-100 to-gray-400 bg-clip-text text-transparent"
+                >
+                  SERIES
+                </motion.h2>
+                <motion.h2
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-display font-bold bg-gradient-to-l from-brand-red to-red-400 bg-clip-text text-transparent"
+                >
+                  MEDAL
+                </motion.h2>
+              </div>
               <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                 Full-series entrants receive a bespoke interlocking medal design. Each individual race medal connects, forming one complete, impressive piece when all three are completed.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-4 inline-block text-left">
                 {[
                   'Bespoke design for 2026',
                   'Heavyweight premium finish',
