@@ -69,7 +69,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
         <div className="[perspective:1200px] [transform-style:preserve-3d]">
             <li
                 ref={slideRef}
-                className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] xl:w-[35vw] xl:h-[35vw] mx-[4vmin] xl:mx-[2vw] z-10 cursor-pointer"
+                className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[75vw] sm:w-[50vw] md:w-[320px] lg:w-[400px] xl:w-[450px] aspect-square mx-[4vw] md:mx-[2vw] z-10 cursor-pointer"
                 onClick={() => {
                     if (current === index) {
                         window.location.href = link;
@@ -129,12 +129,12 @@ const CarouselControl = ({
 }: CarouselControlProps) => {
     return (
         <button
-            className={`w-12 h-12 flex items-center mx-2 justify-center bg-white/5 border border-white/10 backdrop-blur-md rounded-full hover:bg-white/10 hover:border-brand-red/50 hover:text-brand-red active:scale-95 transition-all duration-300 ${type === "previous" ? "rotate-180" : ""
+            className={`group w-14 h-14 flex items-center mx-3 justify-center bg-black/80 border border-white/20 backdrop-blur-md rounded-full hover:bg-black hover:border-brand-red/60 hover:shadow-[0_0_15px_rgba(220,38,38,0.3)] active:scale-95 transition-all duration-300 z-30 ${type === "previous" ? "rotate-180" : ""
                 }`}
             title={title}
             onClick={handleClick}
         >
-            <IconArrowNarrowRight className="text-gray-300" />
+            <IconArrowNarrowRight className="text-white group-hover:text-brand-red" size={24} />
         </button>
     );
 };
@@ -166,11 +166,11 @@ export function ImageCarousel({ slides }: CarouselProps) {
 
     return (
         <div
-            className="relative w-[70vmin] h-[70vmin] xl:w-[35vw] xl:h-[35vw] mx-auto"
+            className="relative w-[75vw] sm:w-[50vw] md:w-[320px] lg:w-[400px] xl:w-[450px] aspect-square mx-auto"
             aria-labelledby={`carousel-heading-${id}`}
         >
             <ul
-                className="absolute flex mx-[-4vmin] xl:mx-[-2vw] transition-transform duration-1000 ease-in-out"
+                className="absolute flex mx-[-4vw] md:mx-[-2vw] transition-transform duration-1000 ease-in-out"
                 style={{
                     transform: `translateX(-${current * (100 / slides.length)}%)`,
                 }}
@@ -186,7 +186,7 @@ export function ImageCarousel({ slides }: CarouselProps) {
                 ))}
             </ul>
 
-            <div className="absolute flex justify-center w-full top-[calc(100%+2rem)]">
+            <div className="absolute flex justify-center items-center w-full top-[calc(100%+1.5rem)] md:top-[calc(100%+3rem)] z-30">
                 <CarouselControl
                     type="previous"
                     title="Go to previous slide"
