@@ -33,7 +33,7 @@ export function NavBar({ items, className }: NavBarProps) {
     return (
         <div
             className={cn(
-                "fixed bottom-0 sm:top-5 left-1/2 -translate-x-1/2 z-[60] mb-6 sm:mt-2",
+                "hidden sm:block fixed bottom-0 sm:top-5 left-1/2 -translate-x-1/2 z-[60] mb-6 sm:mt-2",
                 className,
             )}
         >

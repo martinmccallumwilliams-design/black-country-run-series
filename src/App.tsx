@@ -34,6 +34,7 @@ import SEO from './components/SEO';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -52,16 +53,53 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[60] pointer-events-none transition-all duration-300 ${isScrolled ? 'py-3 drop-shadow-lg' : 'py-6'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[60] pointer-events-none transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'py-3 drop-shadow-lg bg-black/95 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border-b border-white/10 sm:border-transparent' : 'py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 group pointer-events-auto">
+          <a href="#" className="flex items-center gap-2 group pointer-events-auto z-[70]">
             <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-12 h-12 rounded-sm group-hover:scale-110 transition-transform" />
             <span className="font-display font-bold text-lg tracking-tighter hidden sm:block drop-shadow-md">BLACK COUNTRY RUN SERIES</span>
           </a>
-          <a href="#register" className="hidden lg:block pointer-events-auto btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg opacity-90 hover:opacity-100">
+
+          <a href="#register" className="hidden sm:block pointer-events-auto btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg opacity-90 hover:opacity-100">
             Register Interest
           </a>
+
+          {/* Mobile Toggle */}
+          <button className="sm:hidden text-white pointer-events-auto z-[70] p-2 bg-white/5 rounded-lg border border-white/10" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-4 sm:hidden pointer-events-auto shadow-2xl"
+            >
+              {navItems.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  className="text-lg font-medium text-gray-300 hover:text-white transition-colors flex items-center gap-4 py-2 border-b border-white/5"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <link.icon size={20} className="text-brand-red" />
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="#register"
+                className="bg-brand-red text-white py-4 rounded-xl text-center font-bold mt-4 flex items-center justify-center gap-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Register Interest <ArrowRight size={18} />
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
       <NavBar items={navItems} />
     </>
