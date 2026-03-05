@@ -26,6 +26,7 @@ import {
   BarChart3,
   HelpCircle
 } from 'lucide-react';
+import { ImageCarousel } from './components/ui/carousel';
 import { NavBar } from './components/ui/tubelight-navbar';
 import { submitRegistration } from './lib/supabase';
 import SEO from './components/SEO';
@@ -474,17 +475,33 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className="aspect-square rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-brand-red/5">
-              <motion.img
-                initial={{ filter: "grayscale(100%)" }}
-                whileInView={{ filter: "grayscale(0%)" }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                src="/images/BCR Cover Photo.png"
-                alt="Black Country Run Series preview"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
+            <div className="flex justify-center md:justify-end xl:mr-10 items-center w-full h-full relative z-20">
+              <ImageCarousel slides={[
+                {
+                  title: "Black Country Run Series",
+                  button: "View Race",
+                  src: "/images/BCR Cover Photo.png",
+                  link: "#races"
+                },
+                {
+                  title: "Andy Holden 5K",
+                  button: "View Race",
+                  src: "/images/Andy Holden 5k.png",
+                  link: "#races"
+                },
+                {
+                  title: "GWR 5K",
+                  button: "View Race",
+                  src: "/images/GWR 5k.png",
+                  link: "#races"
+                },
+                {
+                  title: "Dudley Zoo 5K",
+                  button: "View Race",
+                  src: "/images/Dudley Zoo 5k.png",
+                  link: "#races"
+                }
+              ]} />
             </div>
           </div>
         </div>
