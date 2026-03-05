@@ -14,6 +14,7 @@ import {
     AlertCircle,
 } from 'lucide-react';
 import { submitEntry } from '../lib/supabase';
+import SEO from '../components/SEO';
 
 const RACES = [
     { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July • 7:15pm', location: 'Baggeridge Country Park' },
@@ -146,6 +147,11 @@ export default function EntryPage() {
 
     return (
         <div className="min-h-screen bg-brand-dark pt-8 pb-24 px-6">
+            <SEO
+                title="Enter Now | Black Country Run Series 2026"
+                description="Secure your place in the Black Country Run Series 2026. Enter the full 3-race series for £35 or choose individual races at £15 each. Professionally timed, traffic-free 5K races."
+                canonical="/enter"
+            />
             <div className="max-w-3xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">

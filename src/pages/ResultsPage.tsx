@@ -15,6 +15,7 @@ import {
     Users,
 } from 'lucide-react';
 import { getResults, type RaceResult } from '../lib/supabase';
+import SEO from '../components/SEO';
 
 const RACE_TABS = [
     { id: 'Andy Holden 5K', name: 'Andy Holden 5K', date: 'Wed 8th July • 7:15pm' },
@@ -69,6 +70,11 @@ export default function ResultsPage() {
 
     return (
         <div className="min-h-screen bg-brand-dark pt-8 pb-24 px-6">
+            <SEO
+                title="Race Results | Black Country Run Series 2026"
+                description="View the official race results for the Black Country Run Series 2026. Search by name, club, or race number across all three 5K events."
+                canonical="/results"
+            />
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">

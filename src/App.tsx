@@ -26,6 +26,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import { submitRegistration } from './lib/supabase';
+import SEO from './components/SEO';
 
 // --- Components ---
 
@@ -353,6 +354,39 @@ const RegisterForm = () => {
 export default function App() {
   return (
     <div className="min-h-screen font-sans selection:bg-brand-red selection:text-white overflow-x-hidden">
+      <SEO
+        title="Black Country Run Series 2026 | Three Evening 5K Races | Tipton Harriers"
+        description="Three professionally organised evening 5K races across iconic Black Country locations — July 2026. Series entry guarantees all 3 races plus an interlocking medal. Organised by Tipton Harriers."
+        canonical="/"
+        structuredData={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity': [
+              { '@type': 'Question', 'name': 'Is it suitable for beginners?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Absolutely! While we have elite runners, the series is open to all abilities. We have a friendly, supportive atmosphere.' } },
+              { '@type': 'Question', 'name': 'Are the courses traffic-free?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, all three races are held on traffic-free courses for your safety and enjoyment.' } },
+              { '@type': 'Question', 'name': 'When do entries open?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Entries will be opening soon! Register your interest now and you\'ll receive a 48-hour priority entry window before entries open to the general public.' } },
+              { '@type': 'Question', 'name': 'Can I enter individual races?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Full series entries open first and guarantee your place in all 3 races. Individual race entries will open later, subject to availability.' } },
+              { '@type': 'Question', 'name': 'Is the GWR 5K officially measured?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, the GWR 5K is England Athletics measured and licensed. Your time will appear on Power of 10.' } },
+              { '@type': 'Question', 'name': 'Are places limited?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes, due to venue capacities, places are strictly limited. Series entrants are guaranteed entry to all 3 races.' } },
+              { '@type': 'Question', 'name': 'Can I wear an iPod or music player?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Under UK Athletics rules, only "open ear" bone conduction headphones are permitted. In-ear headphones can\'t be used.' } },
+              { '@type': 'Question', 'name': 'Can I run with a buggy or a dog?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'No, it is not possible to run with a buggy or a dog. This is against UK Athletics rules and you will be withdrawn from the course and disqualified.' } },
+              { '@type': 'Question', 'name': 'Will there be pacers?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'There won\'t be any official pacers.' } },
+              { '@type': 'Question', 'name': 'What is the minimum age to take part?', 'acceptedAnswer': { '@type': 'Answer', 'text': '11 years old is the minimum age. Any runner under 18 will need parental consent before taking part.' } },
+              { '@type': 'Question', 'name': 'Can I run in Fancy Dress?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Yes absolutely — we encourage fancy dress particularly in the Dudley Zoo 5K at the series finale!' } },
+              { '@type': 'Question', 'name': 'Is there chip timing?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'Not this year, but your time will be verified and England Athletics recognised for ranking purposes.' } },
+              { '@type': 'Question', 'name': 'Can I transfer my race entry?', 'acceptedAnswer': { '@type': 'Answer', 'text': 'A full series entrant can be transferred to another runner for the full 3 races up to 2 weeks before the first event. Single race entries will not be refunded or transferred.' } },
+            ]
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+              { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://blackcountryrun.co.uk/' }
+            ]
+          }
+        ]}
+      />
       <Navbar />
 
       {/* Hero Section */}

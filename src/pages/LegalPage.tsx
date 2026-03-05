@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, Shield, FileText, Cookie, RefreshCcw, Mail } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const sections = [
     { id: 'privacy', label: 'Privacy Policy', icon: Shield },
@@ -28,6 +29,11 @@ const LegalPage = () => {
 
     return (
         <div className="min-h-screen bg-brand-dark text-white">
+            <SEO
+                title="Legal, Privacy Policy & Terms | Black Country Run Series"
+                description="Privacy policy, terms and conditions, cookie policy and refund policy for the Black Country Run Series 2026. GDPR compliant. Organised by Tipton Harriers."
+                canonical="/legal"
+            />
             {/* Header */}
             <div className="border-b border-white/10">
                 <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">

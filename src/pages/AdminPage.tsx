@@ -25,6 +25,7 @@ import {
     Filter,
 } from 'lucide-react';
 import { supabase, type Entry, type RaceResult } from '../lib/supabase';
+import SEO from '../components/SEO';
 
 // --- Auth Component ---
 function AdminLogin({ onLogin }: { onLogin: () => void }) {
@@ -141,6 +142,11 @@ export default function AdminPage() {
 
     return (
         <div className="min-h-screen bg-brand-dark pt-8 pb-24 px-6">
+            <SEO
+                title="Admin Dashboard"
+                description="Admin dashboard for the Black Country Run Series."
+                noindex={true}
+            />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-12">
@@ -170,8 +176,8 @@ export default function AdminPage() {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`px-6 py-3 rounded-xl font-bold text-sm flex items-center gap-2 transition-all whitespace-nowrap ${activeTab === tab.id
-                                    ? 'bg-brand-red text-white'
-                                    : 'glass text-gray-400 hover:text-white'
+                                ? 'bg-brand-red text-white'
+                                : 'glass text-gray-400 hover:text-white'
                                 }`}
                         >
                             {tab.icon} {tab.label}
@@ -474,10 +480,10 @@ function EntriesTab() {
                                             value={entry.payment_status}
                                             onChange={e => updatePaymentStatus(entry.id!, e.target.value)}
                                             className={`text-xs font-bold rounded-full px-3 py-1 bg-transparent border cursor-pointer ${entry.payment_status === 'paid'
-                                                    ? 'border-green-500/30 text-green-400'
-                                                    : entry.payment_status === 'pending'
-                                                        ? 'border-yellow-500/30 text-yellow-400'
-                                                        : 'border-red-500/30 text-red-400'
+                                                ? 'border-green-500/30 text-green-400'
+                                                : entry.payment_status === 'pending'
+                                                    ? 'border-yellow-500/30 text-yellow-400'
+                                                    : 'border-red-500/30 text-red-400'
                                                 }`}
                                         >
                                             <option value="pending">Pending</option>
