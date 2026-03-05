@@ -958,8 +958,18 @@ export default function App() {
                 A summer 5K series celebrating the heritage and community of the Black Country. Hosted by Tipton Harriers.
               </p>
               <div className="flex gap-4">
-                {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                  <a key={i} href="#" className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-all">
+                {[
+                  { Icon: Instagram, href: "https://www.instagram.com/blackcountryrun/" },
+                  { Icon: Facebook, href: "#" },
+                  { Icon: Twitter, href: "#" }
+                ].map(({ Icon, href }, i) => (
+                  <a
+                    key={i}
+                    href={href}
+                    target={href !== "#" ? "_blank" : undefined}
+                    rel={href !== "#" ? "noopener noreferrer" : undefined}
+                    className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-all"
+                  >
                     <Icon size={18} />
                   </a>
                 ))}
