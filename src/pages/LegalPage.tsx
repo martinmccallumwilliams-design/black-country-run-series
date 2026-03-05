@@ -42,7 +42,7 @@ const LegalPage = () => {
                         <span className="text-sm font-medium">Back to Home</span>
                     </Link>
                     <Link to="/" className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-brand-red to-red-700 rounded-lg flex items-center justify-center font-display font-bold text-sm">B</div>
+                        <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-8 h-8 rounded-sm" />
                         <span className="font-display font-bold text-sm tracking-tight">BLACK COUNTRY RUN SERIES</span>
                     </Link>
                 </div>
