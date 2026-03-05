@@ -37,9 +37,10 @@ export const HalideTopoHero: React.FC<HalideTopoHeroProps> = ({ children }) => {
         canvas.style.transform = "rotateX(90deg) rotateZ(0deg) scale(0.8)";
 
         const timeout = setTimeout(() => {
+            const isMobile = window.innerWidth < 768;
             canvas.style.transition = "all 2.5s cubic-bezier(0.16, 1, 0.3, 1)";
             canvas.style.opacity = "1";
-            canvas.style.transform = "rotateX(55deg) rotateZ(-25deg) scale(1.5)";
+            canvas.style.transform = `rotateX(55deg) rotateZ(-25deg) scale(${isMobile ? 1.2 : 1.5})`;
         }, 300);
 
         window.addEventListener("mousemove", handleMouseMove);
@@ -79,7 +80,7 @@ export const HalideTopoHero: React.FC<HalideTopoHeroProps> = ({ children }) => {
                 {/* Canvas */}
                 <div
                     ref={canvasRef}
-                    className="relative w-[150vw] h-[150vh] [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="relative w-[250vw] h-[150vh] sm:w-[150vw] [transform-style:preserve-3d] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                 >
                     {/* Layer 1 */}
                     <div
