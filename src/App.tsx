@@ -837,25 +837,25 @@ export default function App() {
           </a>
 
           {/* Runners Route Banner */}
-          <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="block glass rounded-3xl p-8 md:p-10 hover:border-emerald-600/30 transition-all group relative overflow-hidden border-l-4 border-l-emerald-600">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-emerald-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+          <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="block glass rounded-3xl p-8 md:p-10 hover:border-yellow-500/30 transition-all group relative overflow-hidden border-l-4 border-l-yellow-500">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-yellow-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/5 border border-white/10 p-2 group-hover:scale-110 transition-transform">
-                  <img src="/images/Runners Route Logo.png" alt="Runners Route" className="w-full h-full object-contain" />
+                  <img src="/images/Runners Route Logo.png.png" alt="Runners Route" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="flex-grow text-center md:text-left">
                 <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500">Training Partner</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-500">Training Partner</span>
                   <span className="text-gray-600">•</span>
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">runnersroute.co.uk</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-display font-bold mb-2 group-hover:text-white transition-colors">Free 5K Training Plan</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">Looking for a one-off 5K training plan? Contact <strong className="text-white">Runners Route</strong> and quote code <span className="bg-emerald-600/20 text-emerald-400 font-bold px-2 py-0.5 rounded">'BLACK COUNTRY RUN SERIES'</span> to claim your free downloadable plan.</p>
+                <p className="text-gray-400 text-sm leading-relaxed">Looking for a one-off 5K training plan? Contact <strong className="text-white">Runners Route</strong> and quote code <span className="bg-yellow-500/20 text-yellow-400 font-bold px-2 py-0.5 rounded">'BLACK COUNTRY RUN SERIES'</span> to claim your free downloadable plan.</p>
               </div>
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="btn-partner-emerald px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
+                <div className="btn-partner-yellow px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
                   Get Your Plan <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -863,17 +863,17 @@ export default function App() {
           </a>
 
           {/* Race Rewards Banner */}
-          <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="block glass rounded-3xl p-8 md:p-10 hover:border-amber-600/30 transition-all group relative overflow-hidden border-l-4 border-l-amber-600">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+          <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="block glass rounded-3xl p-8 md:p-10 hover:border-orange-500/30 transition-all group relative overflow-hidden border-l-4 border-l-orange-500">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-orange-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 relative z-10">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 rounded-2xl overflow-hidden bg-white/5 border border-white/10 p-2 group-hover:scale-110 transition-transform">
-                  <img src="/images/Race Rewards Logo.png" alt="Race Rewards" className="w-full h-full object-contain" />
+                  <img src="/images/RaceRewards.png" alt="Race Rewards" className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="flex-grow text-center md:text-left">
                 <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500">Rewards Partner</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-500">Rewards Partner</span>
                   <span className="text-gray-600">•</span>
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">racerewards.co.uk</span>
                 </div>
@@ -881,7 +881,7 @@ export default function App() {
                 <p className="text-gray-400 text-sm leading-relaxed">Claim free rewards by signing up to <strong className="text-white">Race Rewards</strong> — and discover your next race. Because every finish line deserves a reward.</p>
               </div>
               <div className="flex-shrink-0 w-full md:w-auto">
-                <div className="btn-partner-amber px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
+                <div className="btn-partner-orange px-6 py-3 rounded-full text-sm font-bold text-center flex items-center justify-center gap-2">
                   Claim Rewards <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -944,15 +944,15 @@ export default function App() {
                 </div>
                 <span className="text-xs font-bold tracking-wider uppercase">Tipton Harriers</span>
               </a>
-              <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-emerald-500 transition-colors">
-                <div className="w-7 h-7 bg-emerald-600/20 rounded flex items-center justify-center group-hover:bg-emerald-600/30 transition-colors">
-                  <span className="font-display font-bold text-xs text-emerald-500">RR</span>
+              <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-yellow-500 transition-colors">
+                <div className="w-7 h-7 bg-yellow-500/20 rounded flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors">
+                  <span className="font-display font-bold text-xs text-yellow-500">RR</span>
                 </div>
                 <span className="text-xs font-bold tracking-wider uppercase">Runners Route</span>
               </a>
-              <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-amber-500 transition-colors">
-                <div className="w-7 h-7 bg-amber-600/20 rounded flex items-center justify-center group-hover:bg-amber-600/30 transition-colors">
-                  <span className="font-display font-bold text-xs text-amber-500">RW</span>
+              <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-orange-500 transition-colors">
+                <div className="w-7 h-7 bg-orange-500/20 rounded flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
+                  <span className="font-display font-bold text-xs text-orange-500">RW</span>
                 </div>
                 <span className="text-xs font-bold tracking-wider uppercase">Race Rewards</span>
               </a>
