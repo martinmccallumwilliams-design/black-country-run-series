@@ -601,7 +601,7 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="order-2 md:order-1 relative group perspective-1000">
               <motion.div
-                animate={{ y: [-15, 15, -15], rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
+                animate={{ y: [-15, 15, -15] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 className="aspect-square relative z-10 p-8 flex items-center justify-center"
               >
@@ -610,14 +610,14 @@ export default function App() {
                 <img
                   src="/images/BCR Medal.png"
                   alt="Black Country Run Series Complete Interlocking Medal"
-                  className="w-full h-full object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)] filter brightness-110 contrast-125"
+                  className="w-full h-full object-contain drop-shadow-2xl md:drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)] filter brightness-110 contrast-125"
                 />
               </motion.div>
 
               {/* Spinning technical accents */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 max-w-full">
-                <div className="absolute w-[90%] h-[90%] border-[2px] border-dashed border-white/10 rounded-full animate-spin-slow opacity-50" />
-                <div className="absolute w-[80%] h-[80%] border-[1px] border-brand-red/20 rounded-full" style={{ animation: 'spin 20s linear infinite reverse' }} />
+                <div className="absolute w-[90%] h-[90%] border-[2px] border-dashed border-white/10 rounded-full animate-spin-slow opacity-20 md:opacity-50" />
+                <div className="absolute w-[80%] h-[80%] border-[1px] border-brand-red/20 rounded-full opacity-30 md:opacity-100" style={{ animation: 'spin 20s linear infinite reverse' }} />
               </div>
             </div>
 

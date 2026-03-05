@@ -16,6 +16,8 @@ export const HalideTopoHero: React.FC<HalideTopoHeroProps> = ({ children }) => {
 
         // Mouse Parallax Logic
         const handleMouseMove = (e: MouseEvent) => {
+            if (window.innerWidth < 768) return; // Prevent heavy math frame updates on touch hardware
+
             const x = (window.innerWidth / 2 - e.pageX) / 25;
             const y = (window.innerHeight / 2 - e.pageY) / 25;
 
@@ -64,16 +66,16 @@ export const HalideTopoHero: React.FC<HalideTopoHeroProps> = ({ children }) => {
                 }
             `}</style>
 
-            {/* SVG Filter for Grain */}
-            <svg style={{ position: "absolute", width: 0, height: 0 }}>
+            {/* SVG Filter for Grain - Strictly hidden on mobile to protect scroll frames */}
+            <svg className="hidden lg:block" style={{ position: "absolute", width: 0, height: 0 }}>
                 <filter id="grain">
                     <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" />
                     <feColorMatrix type="saturate" values="0" />
                 </filter>
             </svg>
 
-            {/* Grain Overlay */}
-            <div className="fixed inset-0 pointer-events-none z-0 opacity-15" style={{ filter: "url(#grain)" }}></div>
+            {/* Grain Overlay - Hiddden on mobile GPU constraint */}
+            <div className="hidden lg:block fixed inset-0 pointer-events-none z-0 opacity-15" style={{ filter: "url(#grain)" }}></div>
 
             {/* Viewport for 3D Transform */}
             <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden pointer-events-none [perspective:2000px]">
