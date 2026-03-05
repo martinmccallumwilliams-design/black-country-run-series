@@ -799,12 +799,14 @@ export default function App() {
               { q: 'Are there any toilets?', a: 'Yes — check the dedicated race page for details.' },
               { q: 'Is there chip timing?', a: 'Not this year, but your time will be verified and England Athletics recognised for ranking purposes. Race timing will be done by experienced timekeepers and the use of a recorded finish line will help verify any results queried.' },
             ].map((item, i) => (
-              <details key={i} className="glass rounded-2xl group">
-                <summary className="p-6 cursor-pointer font-bold flex items-center justify-between list-none">
-                  {item.q}
-                  <ChevronRight size={18} className="group-open:rotate-90 transition-transform" />
+              <details key={i} className="glass rounded-2xl group transition-all duration-300 hover:border-brand-red/30 hover:shadow-[0_0_15px_rgba(220,38,38,0.1)]">
+                <summary className="p-6 cursor-pointer font-bold flex items-center justify-between gap-4 list-none text-left">
+                  <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-red group-hover:to-red-400 transition-all duration-300">
+                    {item.q}
+                  </span>
+                  <ChevronRight size={18} className="group-open:rotate-90 transition-transform flex-shrink-0 group-hover:text-brand-red" />
                 </summary>
-                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed">
+                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed text-left">
                   {item.a}
                 </div>
               </details>
