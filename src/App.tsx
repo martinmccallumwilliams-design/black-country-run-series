@@ -26,6 +26,7 @@ import {
   BarChart3,
   HelpCircle
 } from 'lucide-react';
+import { HalideTopoHero } from './components/ui/halide-topo-hero';
 import { ImageCarousel } from './components/ui/carousel';
 import { NavBar } from './components/ui/tubelight-navbar';
 import { submitRegistration } from './lib/supabase';
@@ -389,19 +390,8 @@ export default function App() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-12 px-6 overflow-hidden">
-        {/* Hero Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/BCR Cover Photo.png"
-            alt="Black Country Run Series Preview"
-            className="w-full h-full object-cover opacity-60"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/90 via-brand-dark/60 to-brand-dark" />
-        </div>
-
-        <div className="relative z-20 max-w-4xl mx-auto text-center">
+      <HalideTopoHero>
+        <div className="relative z-20 max-w-4xl mx-auto text-center pt-24 sm:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -447,7 +437,7 @@ export default function App() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </HalideTopoHero>
 
       {/* Series Overview */}
       <section id="series" className="py-24 px-6 bg-black relative">
