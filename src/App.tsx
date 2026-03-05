@@ -53,7 +53,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-lg border-b border-white/10 py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-8 h-8 rounded-sm group-hover:scale-110 transition-transform" />
+          <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-12 h-12 rounded-sm group-hover:scale-110 transition-transform" />
           <span className="font-display font-bold text-lg tracking-tighter hidden sm:block">BLACK COUNTRY RUN SERIES</span>
         </a>
 
@@ -944,7 +944,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
               <a href="#" className="flex items-center gap-2 mb-6">
-                <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-8 h-8 rounded-sm" />
+                <img src="/images/BCR logo.png" alt="Black Country Run Series Logo" className="w-12 h-12 rounded-sm" />
                 <span className="font-display font-bold text-xl tracking-tighter">BLACK COUNTRY RUN SERIES</span>
               </a>
               <p className="text-gray-500 max-w-sm mb-8">
