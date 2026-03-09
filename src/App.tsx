@@ -946,7 +946,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black pt-24 pb-12 px-6 border-t border-white/10">
+      <footer className="bg-black pt-24 pb-32 md:pb-12 px-6 border-t border-white/10 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-2">
@@ -1002,19 +1002,19 @@ export default function App() {
           <div className="py-8 border-t border-white/5 mb-8">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600 text-center mb-6">Partners & Affiliates</p>
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              <a href="https://www.tiptonharriers.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-green-500 transition-colors">
+              <a href="https://www.tiptonharriers.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-green-500 transition-colors relative z-30 cursor-pointer pointer-events-auto">
                 <div className="w-7 h-7 bg-green-600/20 rounded flex items-center justify-center group-hover:bg-green-600/30 transition-colors">
                   <span className="font-display font-bold text-xs text-green-500">TH</span>
                 </div>
                 <span className="text-xs font-bold tracking-wider uppercase">Tipton Harriers</span>
               </a>
-              <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-yellow-500 transition-colors">
+              <a href="https://runnersroute.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-yellow-500 transition-colors relative z-30 cursor-pointer pointer-events-auto">
                 <div className="w-7 h-7 bg-yellow-500/20 rounded flex items-center justify-center group-hover:bg-yellow-500/30 transition-colors">
                   <span className="font-display font-bold text-xs text-yellow-500">RR</span>
                 </div>
                 <span className="text-xs font-bold tracking-wider uppercase">Runners Route</span>
               </a>
-              <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-orange-500 transition-colors">
+              <a href="https://racerewards.co.uk" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-500 hover:text-orange-500 transition-colors relative z-30 cursor-pointer pointer-events-auto">
                 <div className="w-7 h-7 bg-orange-500/20 rounded flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
                   <span className="font-display font-bold text-xs text-orange-500">RW</span>
                 </div>
@@ -1029,17 +1029,23 @@ export default function App() {
           </div>
 
           {/* ReplyHero Credit */}
-          <div className="mt-8 text-center">
-            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-gray-400 transition-colors tracking-wider">
-              Website by <span className="font-bold">ReplyHero</span> — Websites & Digital Media serving the Black Country
+          <div className="mt-12 text-center pb-20 md:pb-0 relative z-30">
+            <a href="https://replyhero.co.uk" target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 text-sm text-gray-400 hover:text-white bg-white/5 border border-white/10 hover:border-brand-red/50 hover:bg-brand-red/10 px-8 py-4 rounded-2xl transition-all group relative overflow-hidden cursor-pointer pointer-events-auto shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-red/0 via-brand-red/10 to-brand-red/0 group-hover:translate-x-full transition-transform duration-1000 -translate-x-full" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 group-hover:text-brand-red transition-colors">Digital Partner</span>
+              <span className="flex items-center gap-2">
+                Website by <span className="font-display font-bold text-lg text-white group-hover:text-brand-red transition-colors">ReplyHero</span>
+                <ChevronRight size={16} className="text-brand-red group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="text-xs text-gray-500 mt-1">Websites & Digital Media serving the Black Country</span>
             </a>
           </div>
         </div>
       </footer>
 
       {/* Mobile Sticky CTA */}
-      <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-        <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold">
+      <div className="md:hidden fixed bottom-6 left-6 right-6 z-40 pointer-events-none">
+        <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold pointer-events-auto shadow-[0_0_30px_rgba(0,0,0,0.8)]">
           Register Your Interest
         </a>
       </div>
