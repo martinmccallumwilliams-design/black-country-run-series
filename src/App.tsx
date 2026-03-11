@@ -29,12 +29,15 @@ import {
 import { HalideTopoHero } from './components/ui/halide-topo-hero';
 import { ImageCarousel } from './components/ui/carousel';
 import { NavBar } from './components/ui/tubelight-navbar';
-import { submitRegistration } from './lib/supabase';
+import { submitRegistration, getEntrySettings } from './lib/supabase';
 import SEO from './components/SEO';
+
+const EntryContext = React.createContext({ entriesOpen: false });
 
 // --- Components ---
 
 const Navbar = () => {
+  const { entriesOpen } = React.useContext(EntryContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -62,8 +65,8 @@ const Navbar = () => {
             <span className="font-display font-bold text-lg tracking-tighter hidden sm:block drop-shadow-md">BLACK COUNTRY RUN SERIES</span>
           </a>
 
-          <a href="#register" className="hidden sm:block pointer-events-auto btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg opacity-90 hover:opacity-100">
-            Register Interest
+          <a href={entriesOpen ? '/enter' : '#register'} className="hidden sm:block pointer-events-auto btn-gradient text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg opacity-90 hover:opacity-100">
+            {entriesOpen ? 'Enter Now' : 'Register Now'}
           </a>
 
           {/* Mobile Toggle */}
@@ -93,11 +96,11 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#register"
+                href={entriesOpen ? '/enter' : '#register'}
                 className="bg-brand-red text-white py-4 rounded-xl text-center font-bold mt-4 flex items-center justify-center gap-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Register Interest <ArrowRight size={18} />
+                {entriesOpen ? 'Enter Now' : 'Register Now'} <ArrowRight size={18} />
               </a>
             </motion.div>
           )}
@@ -109,6 +112,7 @@ const Navbar = () => {
 };
 
 const RaceCard = ({ title, date, location, type, idealFor, highlight, images, firstImageHoldTime = 4000 }: { title: string, date: string, location: string, type: string, idealFor: string[], highlight: string, images: string[], firstImageHoldTime?: number }) => {
+  const { entriesOpen } = React.useContext(EntryContext);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -184,8 +188,8 @@ const RaceCard = ({ title, date, location, type, idealFor, highlight, images, fi
             </div>
           </div>
         </div>
-        <a href="#register" className="flex items-center justify-between w-full py-3 px-4 bg-white/5 hover:bg-brand-red/10 border border-white/10 hover:border-brand-red/30 rounded-xl transition-all text-sm font-bold group/btn">
-          Register Interest
+        <a href={entriesOpen ? '/enter' : '#register'} className="flex items-center justify-between w-full py-3 px-4 bg-white/5 hover:bg-brand-red/10 border border-white/10 hover:border-brand-red/30 rounded-xl transition-all text-sm font-bold group/btn">
+          {entriesOpen ? 'Enter Now' : 'Register Now'}
           <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
         </a>
       </div>
@@ -352,7 +356,16 @@ const RegisterForm = () => {
 // --- Main App ---
 
 export default function App() {
+  const [entriesOpen, setEntriesOpen] = useState(false);
+
+  useEffect(() => {
+    getEntrySettings().then(s => {
+      if (s?.general_entries_open) setEntriesOpen(true);
+    });
+  }, []);
+
   return (
+    <EntryContext.Provider value={{ entriesOpen }}>
     <div className="min-h-screen font-sans selection:bg-brand-red selection:text-white overflow-x-hidden">
       <SEO
         title="Black Country Run Series 2026 | Three Evening 5K Races | Tipton Harriers"
@@ -408,8 +421,8 @@ export default function App() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <a href="#register" className="w-full sm:w-auto btn-gradient text-white px-8 py-4 rounded-full font-bold text-lg">
-                Register Your Interest
+              <a href={entriesOpen ? '/enter' : '#register'} className="w-full sm:w-auto btn-gradient text-white px-8 py-4 rounded-full font-bold text-lg">
+                {entriesOpen ? 'Enter Now' : 'Register Now'}
               </a>
               <a href="#races" className="w-full sm:w-auto glass hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
                 View the 3 Races
@@ -700,8 +713,8 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-              <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-xl font-bold">
-                Register for Priority Access
+              <a href={entriesOpen ? '/enter' : '#register'} className="block w-full btn-gradient text-white text-center py-4 rounded-xl font-bold">
+                {entriesOpen ? 'Enter Now' : 'Register for Priority Access'}
               </a>
               <p className="text-[10px] text-center text-gray-500 uppercase tracking-widest mt-3">
                 Register now for 48hr priority entry window
@@ -981,7 +994,7 @@ export default function App() {
               <ul className="space-y-4 text-sm text-gray-500">
                 <li><a href="#series" className="hover:text-white transition-colors">Series Overview</a></li>
                 <li><a href="#races" className="hover:text-white transition-colors">Race Calendar</a></li>
-                <li><a href="#register" className="hover:text-white transition-colors">Register Interest</a></li>
+                <li><a href={entriesOpen ? '/enter' : '#register'} className="hover:text-white transition-colors">{entriesOpen ? 'Enter Now' : 'Register Interest'}</a></li>
                 <li><a href="/results" className="hover:text-white transition-colors">Results</a></li>
               </ul>
             </div>
@@ -1045,10 +1058,11 @@ export default function App() {
 
       {/* Mobile Sticky CTA */}
       <div className="md:hidden fixed bottom-6 left-6 right-6 z-40 pointer-events-none">
-        <a href="#register" className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold pointer-events-auto shadow-[0_0_30px_rgba(0,0,0,0.8)]">
-          Register Your Interest
+        <a href={entriesOpen ? '/enter' : '#register'} className="block w-full btn-gradient text-white text-center py-4 rounded-full font-bold pointer-events-auto shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+          {entriesOpen ? 'Enter Now' : 'Register Now'}
         </a>
       </div>
     </div>
+    </EntryContext.Provider>
   );
 }

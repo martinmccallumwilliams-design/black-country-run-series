@@ -1,6 +1,6 @@
 // Supabase Edge Function: Stripe Webhook Handler
 // Handles checkout.session.completed events
-// Updates entry to 'paid', marks priority code as used, sends confirmation email
+// Updates entry to 'paid', assigns race number, marks priority code as used, sends confirmation email
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
@@ -43,13 +43,35 @@ async function verifyStripeSignature(
   return computedSig === v1Signature;
 }
 
+function getAgeGroup(dob: string, gender: string): string {
+  const birthDate = new Date(dob);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+
+  const g = gender === "M" ? "M" : "F";
+  const prefix = g === "M" ? "M" : "F";
+  const senior = g === "M" ? "MS" : "FS";
+
+  if (age < 40) return senior;
+  if (age < 45) return `${prefix}V40`;
+  if (age < 50) return `${prefix}V45`;
+  if (age < 55) return `${prefix}V50`;
+  if (age < 60) return `${prefix}V55`;
+  if (age < 65) return `${prefix}V60`;
+  return `${prefix}V65+`;
+}
+
 function buildConfirmationEmail(
   firstName: string,
   lastName: string,
   entryType: string,
   races: string[],
   club: string | null,
-  paymentId: string
+  paymentId: string,
+  raceNumber: number,
+  ageGroup: string
 ): string {
   const raceRows = races
     .map((race) => {
@@ -90,7 +112,7 @@ function buildConfirmationEmail(
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%;">
-          
+
           <tr>
             <td style="text-align: center; padding: 32px 0;">
               <span style="font-weight: bold; font-size: 18px; color: white; letter-spacing: -0.5px;">BLACK COUNTRY RUN SERIES</span>
@@ -99,7 +121,7 @@ function buildConfirmationEmail(
 
           <tr>
             <td style="background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%); border-radius: 24px; padding: 48px 40px; border: 1px solid rgba(255,255,255,0.1);">
-              
+
               <div style="text-align: center; margin-bottom: 24px;">
                 <span style="display: inline-block; background-color: rgba(34,197,94,0.2); color: #22c55e; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(34,197,94,0.3);">✅ Entry Confirmed</span>
               </div>
@@ -107,10 +129,17 @@ function buildConfirmationEmail(
               <h1 style="color: white; font-size: 28px; font-weight: bold; text-align: center; margin: 0 0 16px 0; line-height: 1.2;">
                 You're in, ${firstName}! 🎉
               </h1>
-              
+
               <p style="color: #9ca3af; font-size: 16px; text-align: center; margin: 0 0 32px 0; line-height: 1.6;">
                 Your entry for the Black Country Run Series 2026 has been confirmed. See you at the start line!
               </p>
+
+              <!-- Race Number -->
+              <div style="background-color: rgba(155,28,28,0.1); border: 2px solid rgba(155,28,28,0.4); border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 32px;">
+                <div style="color: #6b7280; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px;">Your Race Number</div>
+                <div style="color: white; font-size: 48px; font-weight: bold; font-family: 'Courier New', monospace; line-height: 1;">${raceNumber}</div>
+                <div style="color: #6b7280; font-size: 12px; margin-top: 8px;">Age Group: <strong style="color: #9ca3af;">${ageGroup}</strong></div>
+              </div>
 
               <!-- Entry Details -->
               <div style="background-color: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.08);">
@@ -125,6 +154,10 @@ function buildConfirmationEmail(
                     <td style="padding: 6px 0; color: white; font-size: 13px; font-weight: bold;">${
                       entryType === "series" ? "Full Series (All 3 Races)" : "Individual"
                     }</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #6b7280; font-size: 13px;">Age Group</td>
+                    <td style="padding: 6px 0; color: white; font-size: 13px; font-weight: bold;">${ageGroup}</td>
                   </tr>
                   ${
                     club
@@ -153,10 +186,10 @@ function buildConfirmationEmail(
               <div style="background-color: rgba(155,28,28,0.1); border: 1px solid rgba(155,28,28,0.2); border-radius: 16px; padding: 24px; margin-bottom: 32px;">
                 <h3 style="color: #dc2626; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 12px 0;">What happens next?</h3>
                 <table width="100%" cellpadding="0" cellspacing="0">
-                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Your race number will be emailed closer to race day</td></tr>
-                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Course maps and race day info will follow</td></tr>
+                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Your race number is <strong style="color: white;">${raceNumber}</strong> — save this email!</td></tr>
+                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Course maps and race day info will be emailed before each race</td></tr>
                   <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Arrive at least 45 minutes before your race</td></tr>
-                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Bring your race number and safety pins</td></tr>
+                  <tr><td style="padding: 4px 0; color: #d1d5db; font-size: 13px;">• Bring your race number and safety pins on race day</td></tr>
                 </table>
               </div>
 
@@ -235,6 +268,7 @@ Deno.serve(async (req) => {
         payment_status: "paid",
         payment_id: paymentIntent,
         stripe_session_id: session.id,
+        updated_at: new Date().toISOString(),
       })
       .eq("id", entryId)
       .select()
@@ -245,7 +279,18 @@ Deno.serve(async (req) => {
       throw updateError;
     }
 
-    // 2. Mark priority code as used
+    // 2. Assign race number via atomic DB function
+    const { data: raceNumber, error: raceNumError } = await supabaseAdmin
+      .rpc("assign_race_number", { entry_uuid: entryId });
+
+    if (raceNumError) {
+      console.error("Error assigning race number:", raceNumError);
+      // Non-fatal — admin can assign manually
+    }
+
+    const assignedNumber = raceNumber || 0;
+
+    // 3. Mark priority code as used
     if (priorityCode) {
       await supabaseAdmin
         .from("priority_codes")
@@ -257,15 +302,19 @@ Deno.serve(async (req) => {
         .eq("code", priorityCode);
     }
 
-    // 3. Send confirmation email
+    // 4. Send confirmation email with race number + age group
     if (entry && RESEND_API_KEY) {
+      const ageGroup = getAgeGroup(entry.date_of_birth, entry.gender);
+
       const emailHtml = buildConfirmationEmail(
         entry.first_name,
         entry.last_name,
         entry.entry_type,
         entry.races,
         entry.club,
-        paymentIntent || session.id
+        paymentIntent || session.id,
+        assignedNumber,
+        ageGroup
       );
 
       const emailResponse = await fetch("https://api.resend.com/emails", {
@@ -278,7 +327,7 @@ Deno.serve(async (req) => {
           from: "Black Country Run Series <noreply@blackcountryrun.co.uk>",
           to: [entry.email],
           cc: ADMIN_EMAIL ? [ADMIN_EMAIL] : [],
-          subject: `Entry confirmed! See you at the start line, ${entry.first_name} 🎉`,
+          subject: `Entry confirmed! You're number ${assignedNumber}, ${entry.first_name} 🎉`,
           html: emailHtml,
         }),
       });
@@ -287,11 +336,11 @@ Deno.serve(async (req) => {
         const errData = await emailResponse.json();
         console.error("Confirmation email failed:", errData);
       } else {
-        console.log("Confirmation email sent to", entry.email);
+        console.log(`Confirmation email sent to ${entry.email} — race number ${assignedNumber}`);
       }
     }
 
-    console.log(`✅ Entry ${entryId} marked as paid. Payment: ${paymentIntent}`);
+    console.log(`✅ Entry ${entryId} paid. Race number: ${assignedNumber}. Payment: ${paymentIntent}`);
 
     return new Response(JSON.stringify({ received: true }), {
       status: 200,

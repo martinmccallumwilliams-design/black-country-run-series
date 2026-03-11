@@ -38,9 +38,16 @@ export interface Entry {
   first_name: string;
   last_name: string;
   email: string;
+  phone?: string;
   date_of_birth: string;
   gender: 'M' | 'F';
+  nationality?: string;
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  postcode?: string;
   club?: string;
+  uka_number?: string;
   entry_type: 'series' | 'individual';
   races: string[];
   race_number?: number;
@@ -251,14 +258,22 @@ export async function createCheckoutSession(entryData: {
   first_name: string;
   last_name: string;
   email: string;
+  phone?: string;
   date_of_birth: string;
   gender: 'M' | 'F';
+  nationality?: string;
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  postcode?: string;
   club?: string;
+  uka_number?: string;
   entry_type: 'series' | 'individual';
   races: string[];
   emergency_contact: string;
   emergency_phone: string;
   medical_info?: string;
+  t_shirt_size?: string;
   priority_code?: string;
 }): Promise<{ checkoutUrl: string; sessionId: string }> {
   if (!isConfigured) {
@@ -302,4 +317,18 @@ export async function resendPriorityCode(registrationId: string): Promise<boolea
 
   if (error) throw error;
   return data?.success || false;
+}
+
+export async function sendFollowUpEmails(): Promise<{
+  sent: number;
+  failed: number;
+}> {
+  const { data, error } = await supabase.functions.invoke('send-priority-codes', {
+    body: { action: 'followup' },
+  });
+
+  if (error) throw error;
+  if (data?.error) throw new Error(data.error);
+
+  return { sent: data.sent || 0, failed: data.failed || 0 };
 }

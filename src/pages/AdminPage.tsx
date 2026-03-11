@@ -24,7 +24,7 @@ import {
     Mail,
     Filter,
 } from 'lucide-react';
-import { supabase, type Entry, type RaceResult } from '../lib/supabase';
+import { supabase, sendPriorityCodes, sendFollowUpEmails, type Entry, type RaceResult } from '../lib/supabase';
 import SEO from '../components/SEO';
 
 // --- Auth Component ---
@@ -198,6 +198,8 @@ export default function AdminPage() {
 function RegistrationsTab() {
     const [registrations, setRegistrations] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [actionLoading, setActionLoading] = useState<'codes' | 'followup' | null>(null);
+    const [actionResult, setActionResult] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
     useEffect(() => {
         loadRegistrations();
@@ -211,6 +213,47 @@ function RegistrationsTab() {
 
         if (!error && data) setRegistrations(data);
         setLoading(false);
+    };
+
+    const handleSendPriorityCodes = async () => {
+        const confirmed = window.confirm(
+            `This will send priority entry codes to ALL registrants who haven't received one yet.\n\nEstimated: ${registrations.filter(r => !r.priority_code_sent).length} emails.\n\nContinue?`
+        );
+        if (!confirmed) return;
+        setActionLoading('codes');
+        setActionResult(null);
+        try {
+            const result = await sendPriorityCodes(48);
+            setActionResult({
+                type: 'success',
+                message: `✅ Priority codes sent! ${result.sent} emails delivered, ${result.failed} failed. Window expires in 48 hours.`,
+            });
+            loadRegistrations();
+        } catch (err: any) {
+            setActionResult({ type: 'error', message: `Error: ${err.message}` });
+        } finally {
+            setActionLoading(null);
+        }
+    };
+
+    const handleFollowUp = async () => {
+        const confirmed = window.confirm(
+            `This will send a chase-up email to everyone who received a code but hasn't entered yet.\n\nContinue?`
+        );
+        if (!confirmed) return;
+        setActionLoading('followup');
+        setActionResult(null);
+        try {
+            const result = await sendFollowUpEmails();
+            setActionResult({
+                type: 'success',
+                message: `📧 Follow-up sent! ${result.sent} emails delivered, ${result.failed} failed.`,
+            });
+        } catch (err: any) {
+            setActionResult({ type: 'error', message: `Error: ${err.message}` });
+        } finally {
+            setActionLoading(null);
+        }
     };
 
     const exportCSV = () => {
@@ -233,8 +276,54 @@ function RegistrationsTab() {
 
     if (loading) return <LoadingSpinner />;
 
+    const codeSentCount = registrations.filter(r => r.priority_code_sent).length;
+    const pendingCount = registrations.filter(r => !r.priority_code_sent).length;
+
     return (
         <div>
+            {/* Priority Actions Panel */}
+            <div className="glass rounded-2xl p-6 mb-6">
+                <h2 className="text-sm font-bold uppercase text-gray-500 tracking-wider mb-4">Priority Entry Actions</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4 text-center">
+                    <div className="bg-white/5 rounded-xl p-4">
+                        <div className="text-2xl font-bold">{registrations.length}</div>
+                        <div className="text-xs text-gray-500 mt-1">Total Signups</div>
+                    </div>
+                    <div className="bg-white/5 rounded-xl p-4">
+                        <div className="text-2xl font-bold text-green-400">{codeSentCount}</div>
+                        <div className="text-xs text-gray-500 mt-1">Codes Sent</div>
+                    </div>
+                    <div className="bg-white/5 rounded-xl p-4">
+                        <div className="text-2xl font-bold text-yellow-400">{pendingCount}</div>
+                        <div className="text-xs text-gray-500 mt-1">Awaiting Code</div>
+                    </div>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                    <button
+                        onClick={handleSendPriorityCodes}
+                        disabled={actionLoading !== null || pendingCount === 0}
+                        className="flex-1 bg-brand-red hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+                    >
+                        <Mail size={16} />
+                        {actionLoading === 'codes' ? 'Sending codes...' : `Send Priority Codes (${pendingCount} unsent)`}
+                    </button>
+                    <button
+                        onClick={handleFollowUp}
+                        disabled={actionLoading !== null || codeSentCount === 0}
+                        className="flex-1 glass hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed text-gray-300 hover:text-white py-3 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+                    >
+                        <Mail size={16} />
+                        {actionLoading === 'followup' ? 'Sending follow-ups...' : 'Send Follow-up to Non-Entrants'}
+                    </button>
+                </div>
+                {actionResult && (
+                    <div className={`mt-4 flex items-start gap-3 p-4 rounded-xl text-sm ${actionResult.type === 'success' ? 'bg-green-500/10 border border-green-500/20 text-green-400' : 'bg-red-500/10 border border-red-500/20 text-red-400'}`}>
+                        {actionResult.type === 'success' ? <CheckCircle2 size={16} className="mt-0.5 shrink-0" /> : <AlertCircle size={16} className="mt-0.5 shrink-0" />}
+                        {actionResult.message}
+                    </div>
+                )}
+            </div>
+
             <div className="flex items-center justify-between mb-6">
                 <div className="text-sm text-gray-400">
                     <span className="text-white font-bold text-lg">{registrations.length}</span> interest signups
@@ -340,8 +429,25 @@ function EntriesTab() {
         }
     };
 
+    const getAgeGroup = (dob: string, gender: string): string => {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+        const p = gender === 'M' ? 'M' : 'F';
+        const senior = gender === 'M' ? 'MS' : 'FS';
+        if (age < 40) return senior;
+        if (age < 45) return `${p}V40`;
+        if (age < 50) return `${p}V45`;
+        if (age < 55) return `${p}V50`;
+        if (age < 60) return `${p}V55`;
+        if (age < 65) return `${p}V60`;
+        return `${p}V65+`;
+    };
+
     const exportCSV = () => {
-        const headers = ['Race No', 'First Name', 'Last Name', 'Email', 'DOB', 'Gender', 'Club', 'Entry Type', 'Races', 'Payment', 'Emergency Contact', 'Emergency Phone', 'Medical'];
+        const headers = ['Race No', 'First Name', 'Last Name', 'Email', 'DOB', 'Gender', 'Age Group', 'Club', 'Entry Type', 'Races', 'Payment', 'Emergency Contact', 'Emergency Phone', 'Medical'];
         const rows = entries.map(e => [
             e.race_number || '',
             e.first_name,
@@ -349,6 +455,7 @@ function EntriesTab() {
             e.email,
             e.date_of_birth,
             e.gender,
+            e.date_of_birth ? getAgeGroup(e.date_of_birth, e.gender) : '',
             e.club || '',
             e.entry_type,
             (e.races || []).join('; '),
@@ -419,6 +526,7 @@ function EntriesTab() {
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Name</th>
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Email</th>
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Gender</th>
+                                <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Age Grp</th>
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Club</th>
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Entry</th>
                                 <th className="px-4 py-4 text-left text-xs font-bold uppercase text-gray-500">Races</th>
@@ -459,6 +567,7 @@ function EntriesTab() {
                                     <td className="px-4 py-4 font-bold whitespace-nowrap">{entry.first_name} {entry.last_name}</td>
                                     <td className="px-4 py-4 text-gray-400 text-xs">{entry.email}</td>
                                     <td className="px-4 py-4 text-gray-400">{entry.gender}</td>
+                                    <td className="px-4 py-4 text-gray-400 text-xs">{entry.date_of_birth ? getAgeGroup(entry.date_of_birth, entry.gender) : '—'}</td>
                                     <td className="px-4 py-4 text-gray-400 text-xs">{entry.club || '—'}</td>
                                     <td className="px-4 py-4">
                                         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${entry.entry_type === 'series' ? 'bg-brand-red/20 text-brand-red' : 'bg-white/10 text-gray-400'

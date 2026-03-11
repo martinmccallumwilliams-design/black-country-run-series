@@ -17,14 +17,22 @@ interface EntryData {
   first_name: string;
   last_name: string;
   email: string;
+  phone?: string;
   date_of_birth: string;
   gender: "M" | "F";
+  nationality?: string;
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  postcode?: string;
   club?: string;
+  uka_number?: string;
   entry_type: "series" | "individual";
   races: string[];
   emergency_contact: string;
   emergency_phone: string;
   medical_info?: string;
+  t_shirt_size?: string;
   priority_code?: string;
 }
 
@@ -142,9 +150,16 @@ Deno.serve(async (req) => {
           first_name: entryData.first_name,
           last_name: entryData.last_name,
           email: entryData.email,
+          phone: entryData.phone || null,
           date_of_birth: entryData.date_of_birth,
           gender: entryData.gender,
+          nationality: entryData.nationality || "British",
+          address_line1: entryData.address_line1 || null,
+          address_line2: entryData.address_line2 || null,
+          city: entryData.city || null,
+          postcode: entryData.postcode || null,
           club: entryData.club || null,
+          uka_number: entryData.uka_number || null,
           entry_type: entryData.entry_type,
           races:
             entryData.entry_type === "series"
@@ -153,6 +168,7 @@ Deno.serve(async (req) => {
           emergency_contact: entryData.emergency_contact,
           emergency_phone: entryData.emergency_phone,
           medical_info: entryData.medical_info || null,
+          t_shirt_size: entryData.t_shirt_size || null,
           priority_code: entryData.priority_code || null,
           payment_status: "pending",
         },
