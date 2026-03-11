@@ -74,8 +74,8 @@ export const HalideTopoHero: React.FC<HalideTopoHeroProps> = ({ children }) => {
                 </filter>
             </svg>
 
-            {/* Grain Overlay - Hiddden on mobile GPU constraint */}
-            <div className="hidden lg:block fixed inset-0 pointer-events-none z-0 opacity-15" style={{ filter: "url(#grain)" }}></div>
+            {/* Grain Overlay - scoped to hero only (fixed caused pointer-events bug in Chromium) */}
+            <div className="hidden lg:block absolute inset-0 pointer-events-none z-[1] opacity-15" style={{ filter: "url(#grain)" }}></div>
 
             {/* Viewport for 3D Transform */}
             <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden pointer-events-none [perspective:2000px]">
