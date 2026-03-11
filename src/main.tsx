@@ -7,6 +7,7 @@ import EntryPage from './pages/EntryPage.tsx';
 import ResultsPage from './pages/ResultsPage.tsx';
 import AdminPage from './pages/AdminPage.tsx';
 import LegalPage from './pages/LegalPage.tsx';
+import SuccessPage from './pages/SuccessPage.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/legal" element={<LegalPage />} />
+          <Route path="/enter/success" element={<SuccessPage />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

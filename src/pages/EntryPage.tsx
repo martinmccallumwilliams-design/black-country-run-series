@@ -7,8 +7,9 @@ import {
     ShieldCheck,
     AlertCircle,
     Lock,
+    Key,
 } from 'lucide-react';
-import { createCheckoutSession, getEntrySettings } from '../lib/supabase';
+import { createCheckoutSession, getEntrySettings, validatePriorityCode } from '../lib/supabase';
 import SEO from '../components/SEO';
 
 const RACES = [
@@ -100,6 +101,14 @@ export default function EntryPage() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
     const [errorMsg, setErrorMsg] = useState('');
     const [entriesOpen, setEntriesOpen] = useState<boolean | null>(null);
+    const [priorityWindowOpen, setPriorityWindowOpen] = useState(false);
+
+    // Priority code gate
+    const [priorityCodeInput, setPriorityCodeInput] = useState('');
+    const [priorityCodeValidated, setPriorityCodeValidated] = useState(false);
+    const [priorityCodeError, setPriorityCodeError] = useState('');
+    const [priorityCodeLoading, setPriorityCodeLoading] = useState(false);
+    const [validatedCode, setValidatedCode] = useState('');
 
     const totalSteps = 3;
     const seriesPrice = 35;
@@ -111,8 +120,29 @@ export default function EntryPage() {
     useEffect(() => {
         getEntrySettings().then(s => {
             setEntriesOpen(s?.general_entries_open ?? false);
+            setPriorityWindowOpen(s?.priority_window_open ?? false);
         });
     }, []);
+
+    const handleValidatePriorityCode = async () => {
+        setPriorityCodeError('');
+        setPriorityCodeLoading(true);
+        const result = await validatePriorityCode(priorityCodeInput.trim());
+        setPriorityCodeLoading(false);
+        if (result.valid) {
+            setValidatedCode(priorityCodeInput.trim().toUpperCase());
+            setPriorityCodeValidated(true);
+            // Pre-fill email if the code contains it
+            if (result.data?.email && !form.email) {
+                setForm(prev => ({ ...prev, email: result.data!.email }));
+            }
+            if (result.data?.first_name && !form.firstName) {
+                setForm(prev => ({ ...prev, firstName: result.data!.first_name }));
+            }
+        } else {
+            setPriorityCodeError(result.error || 'Invalid code');
+        }
+    };
 
     const update = (field: keyof FormData, value: any) => {
         setForm(prev => ({ ...prev, [field]: value }));
@@ -167,6 +197,7 @@ export default function EntryPage() {
                 emergency_phone: form.emergencyPhone,
                 medical_info: medicalInfoFull.trim() || undefined,
                 t_shirt_size: form.tShirtSize || undefined,
+                priority_code: validatedCode || undefined,
             });
 
             window.location.href = checkoutUrl;
@@ -186,8 +217,8 @@ export default function EntryPage() {
         );
     }
 
-    // Entries closed
-    if (!entriesOpen) {
+    // Entries fully closed (no priority window either)
+    if (!entriesOpen && !priorityWindowOpen) {
         return (
             <div className="min-h-screen bg-brand-dark flex items-center justify-center px-6 py-24">
                 <div className="glass p-12 rounded-3xl text-center max-w-lg w-full">
@@ -202,6 +233,63 @@ export default function EntryPage() {
                         Register Your Interest
                     </a>
                 </div>
+            </div>
+        );
+    }
+
+    // Priority window open but code not yet validated
+    if (!entriesOpen && priorityWindowOpen && !priorityCodeValidated) {
+        return (
+            <div className="min-h-screen bg-brand-dark flex items-center justify-center px-6 py-24">
+                <SEO
+                    title="Priority Entry | Black Country Run Series 2026"
+                    description="Enter your priority code to secure your place in the Black Country Run Series 2026."
+                    canonical="/enter"
+                />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                    className="glass p-12 rounded-3xl text-center max-w-lg w-full"
+                >
+                    <div className="w-20 h-20 bg-brand-red/20 text-brand-red rounded-full flex items-center justify-center mx-auto mb-8">
+                        <Key size={40} />
+                    </div>
+                    <h2 className="text-3xl font-display font-bold mb-2">Priority Entry</h2>
+                    <p className="text-gray-400 mb-8 text-sm leading-relaxed">
+                        We're currently in the priority entry window. Enter your priority code below to secure your place.
+                        Codes were emailed to everyone who registered their interest.
+                    </p>
+                    <div className="space-y-4 text-left">
+                        <input
+                            type="text"
+                            placeholder="e.g. BCR-ABCD-1234"
+                            className={`${inputClass} text-center uppercase tracking-widest text-lg font-mono`}
+                            value={priorityCodeInput}
+                            onChange={e => setPriorityCodeInput(e.target.value.toUpperCase())}
+                            onKeyDown={e => e.key === 'Enter' && priorityCodeInput && handleValidatePriorityCode()}
+                        />
+                        {priorityCodeError && (
+                            <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 p-3 rounded-xl text-sm">
+                                <AlertCircle size={16} /> {priorityCodeError}
+                            </div>
+                        )}
+                        <button
+                            onClick={handleValidatePriorityCode}
+                            disabled={!priorityCodeInput.trim() || priorityCodeLoading}
+                            className="btn-gradient w-full text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 disabled:opacity-40 disabled:pointer-events-none"
+                        >
+                            {priorityCodeLoading ? (
+                                <><span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Checking...</>
+                            ) : (
+                                <>Validate Code <ArrowRight size={18} /></>
+                            )}
+                        </button>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-6">
+                        Don't have a code?{' '}
+                        <a href="/#register" className="text-gray-400 hover:text-white underline">Register your interest</a>{' '}
+                        and you'll be contacted when general entries open.
+                    </p>
+                </motion.div>
             </div>
         );
     }
