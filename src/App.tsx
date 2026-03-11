@@ -839,7 +839,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="relative overflow-hidden">
               <h2 className="text-4xl md:text-7xl mb-8 leading-tight">
                 GET <span className="text-brand-red">PRIORITY</span> <br /> ACCESS
               </h2>
@@ -866,7 +866,7 @@ export default function App() {
               </ul>
             </div>
 
-            <div id="form-container">
+            <div id="form-container" className="relative z-10">
               <RegisterForm />
             </div>
           </div>
